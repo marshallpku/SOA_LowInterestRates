@@ -1,0 +1,1307 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+
+# Motivation
+
+## Pensions funded status, FRB
+### Funded ratio, quarterly
+```{r}
+fof.q <- readRDS("./data/fof.q.rds")
+max(fof.q$date)
+
+# fof.q %>% filter(date==max(date), slgppf=="slgdb") %>%
+#   gather(variable, value, -slgppf, -date)
+
+pdata <- fof.q %>% filter(year(date)>=1973, slgppf=="slgdb") %>%
+  select(date, fr.mv)
+
+gtitle1 <- "Funded ratio of state and local government defined benefit pension plans"
+srcnote <- "\nSource: Federal Reserve Board, Financial Accounts of the United States, Table L.120.b
+Note: Liabilities are as valued by the Bureau of Economic Analysis, not actuaries."
+p <- pdata %>%
+  ggplot(aes(x=date, y=fr.mv)) +
+  geom_line(size=rel(1), colour="blue") +
+  geom_point(size=rel(1), colour="blue") +
+  geom_hline(yintercept = 100, size=rel(1.1), colour="black") +
+  scale_y_continuous(name="Percent (%)", breaks=seq(0, 200, 5)) +
+  scale_x_date(name=NULL, 
+               breaks=c(seq.Date(as.Date("1900-01-01"), as.Date("2020-01-01"), "5 years")),
+               minor_breaks = seq.Date(as.Date("1900-01-01"), as.Date("2020-01-01"), "1 year"),
+               date_labels = "%Y") +
+  labs(caption=srcnote) +
+  ggtitle(label=gtitle1) +
+  theme_bw() +
+  theme(plot.title = element_text(size=rel(1.5), face="bold")) +
+  theme(plot.subtitle = element_text(size=rel(1), face="bold")) +
+  theme(axis.title = element_text(face="bold", size=rel(1))) +
+  theme(axis.text = element_text(face="bold", size=rel(1))) +
+  theme(plot.caption = element_text(hjust=0, size=rel(.8))) +
+  theme(panel.grid.major.x = element_line(size=0.3, colour="lightgrey"),
+          panel.grid.minor.x = element_line(linetype="dashed", size=0.1, colour="#d9d9d9"))
+p
+# print(p)
+
+
+ggsave("./results/motivation/fundedratio.png", p, width=gwidth, height=gheight, units="in")
+write_csv(pdata, "./results/motivation/fundedratio_data.csv")
+
+```
+
+
+### Unfunded liability as % of GDP
+```{r}
+fof.q <- readRDS("./data/fof.q.rds")
+
+pdata <- fof.q %>% filter(year(date)>=1973, slgppf=="slgdb") %>%
+  select(date, claims, gdp) %>%
+  mutate(ufl.gdp=claims / gdp * 100)
+
+gtitle1 <- "Unfunded liability of state and local government defined benefit pension plans"
+gtitle2 <- "As percentage of Gross Domestic Product"
+srcnote <- "\nSource: Federal Reserve Board, Financial Accounts of the United States, Tables L.120.b and F.2
+Note: Liabilities are as valued by the Bureau of Economic Analysis, not actuaries."
+p <- pdata %>%
+  ggplot(aes(x=date, y=ufl.gdp)) +
+  geom_line(size=rel(1), colour="blue") +
+  geom_point(size=rel(1), colour="blue") +
+  geom_hline(yintercept = 0, size=rel(1.1), colour="black") +
+  scale_y_continuous(name="Percent (%)", breaks=seq(-100, 100, 2)) +
+  scale_x_date(name=NULL, 
+               breaks=c(seq.Date(as.Date("1900-01-01"), as.Date("2020-01-01"), "5 years")),
+               minor_breaks = seq.Date(as.Date("1900-01-01"), as.Date("2020-01-01"), "1 year"),
+               date_labels = "%Y") +
+  labs(caption=srcnote) +
+  ggtitle(label=gtitle1, subtitle=gtitle2) +
+  theme_bw() +
+  theme(plot.title = element_text(size=rel(1.3), face="bold")) +
+  theme(plot.subtitle = element_text(size=rel(1), face="bold")) +
+  theme(axis.title = element_text(face="bold", size=rel(1))) +
+  theme(axis.text = element_text(face="bold", size=rel(1))) +
+  theme(plot.caption = element_text(hjust=0, size=rel(.8))) +
+  theme(panel.grid.major.x = element_line(size=0.3, colour="lightgrey"),
+          panel.grid.minor.x = element_line(linetype="dashed", size=0.1, colour="#d9d9d9"))
+p
+ggsave("./results/motivation/ufl_gdp.png", p, width=gwidth, height=gheight, units="in")
+write_csv(pdata, "./results/motivation/ufl_gdp_data.csv")
+
+# axis.text.x=element_text(angle=45, hjust=0)
+
+```
+
+
+
+### Investible assets, nominal
+```{r}
+fof.q <- readRDS("./data/fof.q.rds")
+basedate <- "2017-10-01"
+igdppi <- getgdppi("Q") %>%
+  mutate(igdppi=gdppi[date==basedate] / gdppi)
+
+# claims invassets
+pdata <- fof.q %>% filter(year(date)>=1990, slgppf=="slgdb") %>%
+  select(date, invassets) %>%
+  left_join(igdppi) %>%
+  mutate(invassets=invassets / 1000,
+         rinvassets=invassets * igdppi)
+
+gtitle1 <- "Inflation-adjusted assets of state and local government defined benefit pension plans"
+gtitle2 <- "Big impact in 2001, 2007 recessions, not in 1990"
+srcnote <- "\nSource: Federal Reserve Board, Financial Accounts of the United States"
+p <- pdata %>%
+  ggplot(aes(x=date, y=rinvassets)) +
+  geom_line(size=rel(1), colour="blue") +
+  geom_point(size=rel(1), colour="blue") +
+  geom_hline(yintercept = 0, size=rel(0.5), colour="black") +
+  scale_y_continuous(name="billions of 2017 $", 
+                     breaks=seq(0, 5000, 500), 
+                     limits=c(0, NA), 
+                     labels=scales::comma) +
+  scale_x_date(name=NULL, 
+               breaks=c(seq.Date(as.Date("1900-01-01"), as.Date("2020-01-01"), "5 years"), 
+                       as.Date("2017-01-01"),
+                       as.Date("2018-01-01"),
+                       as.Date("2019-01-01")),
+               date_labels = "%Y") +
+  labs(caption=srcnote) +
+  ggtitle(label=gtitle1) +
+  theme_bw() +
+  theme(plot.title = element_text(size=rel(1.3), face="bold")) +
+  theme(plot.subtitle = element_text(size=rel(1), face="bold")) +
+  theme(axis.title = element_text(face="bold", size=rel(1))) +
+  theme(axis.text = element_text(face="bold", size=rel(1))) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  theme(plot.caption = element_text(hjust=0, size=rel(.8)))
+p
+ggsave("./results/motivation/rassets.png", p, width=11, height=6.25, units="in")
+write_csv(pdata, "./results/motivation/rassets_data.csv")
+
+# axis.text.x=element_text(angle=45, hjust=0)
+
+```
+
+
+### map: Unfunded liability as % of SLG taxes
+```{r}
+
+fof.q <- readRDS("./data/fof.q.rds")
+
+pdata <- fof.q %>% 
+  filter(year(date)>=1973, slgppf=="slgdb") %>%
+  select(date, claims, slgtax) %>%
+  mutate(ufl.slgtax=claims / slgtax * 100)
+
+gtitle1 <- "Unfunded liability of state and local government defined benefit pension plans"
+gtitle2 <- "As percentage of state and local government tax revenue"
+srcnote <- "\nSource: Federal Reserve Board, Financial Accounts of the United States, Tables L.120.b and F.107
+Note: Liabilities are as valued by the Bureau of Economic Analysis, not actuaries."
+p <- pdata %>%
+  ggplot(aes(x=date, y=ufl.slgtax)) +
+  geom_line(size=rel(1), colour="blue") +
+  geom_point(size=rel(1), colour="blue") +
+  geom_hline(yintercept = 0, size=rel(1.1), colour="black") +
+  scale_y_continuous(name="Percent (%)", breaks=seq(-200, 400, 10)) +
+  scale_x_date(name=NULL, 
+               breaks=c(seq.Date(as.Date("1900-01-01"), as.Date("2020-01-01"), "5 years"), 
+                       as.Date("2017-01-01")), 
+               date_labels = "%Y") +
+  labs(caption=srcnote) +
+  ggtitle(label=gtitle1, subtitle=gtitle2) +
+  theme_bw() +
+  theme(plot.title = element_text(size=rel(1.3), face="bold")) +
+  theme(plot.subtitle = element_text(size=rel(1), face="bold")) +
+  theme(axis.title = element_text(face="bold", size=rel(1))) +
+  theme(axis.text = element_text(face="bold", size=rel(1))) +
+  theme(plot.caption = element_text(hjust=0, size=rel(.8)))
+p
+ggsave("./results/motivation/ufl_slgtax.png", p, width=gwidth, height=gheight, units="in")
+write_csv(pdata, "./results/motivation/ufl_slgtax_data.csv")
+
+
+```
+
+
+### map: Unfunded liability as % of state gdp
+```{r map_uflgdp}
+pdata <- statepen.frb %>% 
+  filter(vname=="ufl.gdp", year==2016, !stabbr %in% c("DC", "US")) %>%
+  mutate(ufl.gdp=-value) %>%
+  select(stabbr, year, ufl.gdp) %>%
+  arrange(desc(ufl.gdp))
+summary(pdata)
+quantile(pdata$ufl.gdp, probs=c(0, .5, seq(.5, 1, .05)))
+
+# cut(pdata$ufl.gdp, 4)
+# cutpts <- c(-1e9, 0, 4, 8, 12, 1e9)
+cutpts <- c(-1e9, 0, 15, 20, 25, 30, 1e9)
+pdata$pgroup <- cut(pdata$ufl.gdp, cutpts, right=FALSE, include.lowest=FALSE)
+count(pdata, pgroup)
+pdata %>% arrange(-ufl.gdp) %>% kable(digits=1)
+(levs <- levels(pdata$pgroup))
+# labs <- c("  Fully funded", "  < 4%", "  4% to < 8%", "  8% to < 12%", "  12% or more")
+# labs <- c("  Fully funded", "  < 5%", "  5% to < 10%", " 10% to < 15%", " 20% to < 25%", " 25% to < 30%", " 30% or more")
+labs <- c("  Fully funded", "  < 15%", "  15% to < 20%", " 20% to < 25%", " 25% to < 30%", " 30% or more")
+cbind(levs, labs)
+
+stabbrmaplabels2 <- stabbrmaplabels %>% left_join(pdata) %>%
+  mutate(stabbr2=stabbr,
+         stabbr2=ifelse(ufl.gdp>=12, paste0(stabbr, "\n", round(ufl.gdp, 1)), stabbr),
+         stabbr2=ifelse(stabbr=="RI", stabbr, stabbr2))
+
+mapdata <- merge(pdata, map48, by="stabbr") %>% arrange(order) # keep data sorted by polygon order
+
+gtitle1 <- "Unfunded liability as % of state gross domestic product, 2016"
+gtitle2 <- "State & locally administered plans combined"
+
+srcnote <- "Source: Federal Reserve Board Enhanced Financial Accounts
+https://www.federalreserve.gov/apps/fof/efa/efa-project-state-local-government-defined-benefit-pension-plans.htm
+These numbers differ from actuaries' estimates, and reflect discounting at 5%."
+
+#fb6a4a
+#cb181d
+cols <- c("lightgrey", "#1a9641", "#a6d96a", "#fdae61", "#fb6a4a", "#d7191c")
+
+p <- ggplot(mapdata, aes(x=long, y=lat, group=group)) +
+  geom_polygon(aes(fill=factor(pgroup, levels=levs, labels=labs))) +
+  geom_path(colour="gray", linetype=2) +
+  coord_map() + 
+  scale_fill_manual('% of GDP', values=cols, drop=FALSE) + 
+  geom_text(data=stabbrmaplabels2, aes(x=x, y=y, label=stabbr2), colour="black", size=2, family=fam) + 
+  labs(x=NULL) +
+  labs(y=NULL) +
+  labs(caption=srcnote) +
+  ggtitle(label=gtitle1, subtitle=gtitle2)
+# now add all theme elements
+p2 <- p + theme_bw() +
+  theme(plot.title=element_text(size=rel(1.3), face="bold")) +
+  theme(plot.subtitle=element_text(size=rel(1), face="bold")) +
+  theme(axis.title.x=element_text(size=rel(1), colour="black", hjust=0)) +
+  theme(axis.text.x=element_blank(), axis.ticks.x=element_blank()) +
+  theme(axis.text.y=element_blank(), axis.ticks.y=element_blank()) +
+  theme(panel.grid.major = element_blank()) +
+  theme(plot.caption = element_text(hjust=0, size=rel(.8)))
+p2
+
+ggsave(plot=p2, "./results/motivation/ufl_state_gdp_map.png", width=gwidth, height=gheight)
+write_csv(pdata, "./results/motivation/ufl_state_gdp_map_data.csv")
+
+```
+
+
+### Trends: Unfunded liability as % of state gdp
+```{r neng, eval=FALSE}
+#  Liabilities discounted at the following rates: 2000-2003: 6.0 2004-2009: 5.5 2010-2015: 5.0
+sts <- c("CT", "ME", "MA", "NH", "RI", "VT", "US")
+
+pdata <- statepen.frb %>% 
+  filter(vname=="ufl.gdp", stabbr %in% sts) %>%
+  filter(year>=2010) %>%
+  mutate(ufl.gdp=-value,
+         stabbr=factor(stabbr, levels=sts)) %>%
+  select(stabbr, year, ufl.gdp)
+
+gtitle1 <- "Unfunded liability as % of state gross domestic product, New England states"
+gtitle2 <- "State & locally administered plans combined"
+
+srcnote <- "Source: Federal Reserve Board Enhanced Financial Accounts
+https://www.federalreserve.gov/apps/fof/efa/efa-project-state-local-government-defined-benefit-pension-plans.htm
+These numbers differ from actuaries' estimates, and reflect discounting at 5%."
+
+xlab <- "Calendar year"
+xlab <- NULL
+
+# http://colorbrewer2.org/#type=qualitative&scheme=Paired&n=6
+# col6 <- c('#a6cee3','#1f78b4','#b2df8a','#33a02c','#fb9a99','#e31a1c')
+# col6 <- c('#e41a1c','#377eb8','#4daf4a','#984ea3','#ff7f00','#ffff33')
+# col6 <- c('#66c2a5','#fc8d62','#8da0cb','#e78ac3','#a6d854','#ffd92f')
+
+red3 <- c('#fee0d2','#fc9272','#de2d26') # bad to worst
+green3 <- c('#e5f5e0','#a1d99b','#31a354') # ok to best
+blue3 <- c('#bdd7e7','#6baed6','#2171b5') # ok to best
+sts.order <- c("CT", "MA", "RI", "VT", "NH", "ME") # worst to best
+cols.order <- c(sort(red3), green3)
+cols.order <- c(sort(red3), blue3)
+# now put them in the order of the states
+col6 <- cols.order[match(sts[1:6], sts.order)]
+
+
+p <- pdata %>%
+  ggplot(aes(x=year, y=ufl.gdp, colour=stabbr)) +
+  geom_line(size=rel(1.5)) +
+  geom_point(size=rel(2)) +
+  scale_y_continuous(name="Percent (%)", breaks=seq(0, 100, 2)) +
+  scale_x_continuous(breaks=2000:2020) +
+  scale_colour_manual(values=c(col6, "black")) +
+  legend +
+  labs(x=xlab, caption=srcnote) +
+  ggtitle(label=gtitle1, subtitle=gtitle2) +
+  theme_bw() +
+  theme(plot.title = element_text(size=rel(1.3), face="bold")) +
+  theme(plot.subtitle = element_text(size=rel(1), face="bold")) +
+  theme(axis.title = element_text(face="bold", size=rel(1))) +
+  theme(axis.text = element_text(face="bold", size=rel(1))) +
+  theme(plot.caption = element_text(hjust=0, size=rel(.5))) +
+  geom_line(size=rel(1)) +
+  geom_point(size=rel(1))
+p
+ggsave("./results/motivation/ufl_gdp_neng.png", p, width=gwidth, height=gheight, units="in")
+write_csv(pdata, "./results/motivation/ufl_gdp_neng_data.csv")
+
+
+```
+
+
+```{r}
+# scatter
+sts <- c("CT", "ME", "MA", "NH", "RI", "VT", "US", "KY", "IL", "NJ")
+glimpse(statepen.frb)
+count(statepen.frb, vname)
+
+pdata <- statepen.frb %>% 
+  filter(vname %in% c("ufl.gdp", "fr"), stabbr %in% sts) %>%
+  filter(year==2016) %>%
+  select(stabbr, vname, value) %>%
+  spread(vname, value) %>%
+  mutate(ufl.gdp=-ufl.gdp)
+
+title <- "Funded ratios and unfunded liability as % of state GDP in 2016, selected states"
+subtitle <- "Total of all state and local pension plans in a state, as valued by the U.S. Bureau of Economic Analysis (reflects a 5% discount rate)"
+capt1 <- "\nNotes:\n  The further a dot is to the left, the more difficult the situation for pension plans."
+capt2 <- "\n  The higher a dot is, the more difficult solutions are likely to be for taxpayers and government stakeholders."
+capt3 <- "\nSource: https://www.federalreserve.gov/apps/fof/efa/efa-project-state-local-government-defined-benefit-pension-plans.htm"
+capt <- paste0(capt1, capt2, capt3)
+
+p <- ggplot(data=pdata, aes(x=fr, y=ufl.gdp, label=stabbr)) +
+  theme_bw() +
+  geom_point(colour="blue") +
+  scale_x_continuous(name="Funded ratio (market value)", breaks=seq(10, 100, 5)) +
+  scale_y_continuous(name="Unfunded liability as % of state GDP", breaks=seq(0, 70, 2)) +
+  # geom_text(size=4, nudge_y = 0.25, fontface="bold") +
+  geom_text(size=4, nudge_y = 0.75) +
+  geom_hline(yintercept = pdata$ufl.gdp[pdata$stabbr=="US"]) +
+  geom_vline(xintercept = pdata$fr[pdata$stabbr=="US"]) +
+  ggtitle(label=title, subtitle=subtitle) +
+  labs(caption=capt) +
+  theme(plot.caption = element_text(hjust=0, size=rel(1)))
+p
+
+ggsave("./Results/motivation/neng_uflgdp_fr_scatter.png", p, width=10, height=6, units="in")
+
+
+```
+
+
+
+## Interest rates and earnings assumptions
+```{r}
+rates.all <- readRDS("./data/rates.all.rds")
+levs <- c("DGS10", "private", "public")
+labs <- c("10-year Treasury yield", "Private average assumed return", "State-local average assumed return")
+
+lastyear <- 2018
+
+pdata <- rates.all %>% filter(fyear>=1990, fyear<=lastyear) %>%
+  select(-DGS30) %>%
+  mutate(public=na.approx(public, na.rm=FALSE)) %>%
+  gather(series, value, -fyear) %>%
+  mutate(seriesf=factor(series, levels=levs, labels=labs),
+         fyear=as.integer(fyear))
+
+gtitle1 <- "Assumed investment returns and risk-free returns"
+gtitle2 <- "Public and private retirement systems"
+xlab <- "Pension fund fiscal year"
+src <- "\nNotes:
+- Public plan assumptions for 2001+ from Public Plans Database, Center for Retirement Research. Earlier years from multiple sources.
+- Private plan assumptions provided via correspondence with authors of:
+   Andonov, Aleksandar and Bauer, Rob and Cremers, Martijn, Pension Fund Asset Allocation and Liability Discount Rates (March 3, 2016). http://ssrn.com/abstract=2070054
+- 10-Year Treasury yield from Federal Reserve Bank of St. Louis (FRED)"
+p <- ggplot(data=pdata, aes(x=fyear, y=value, colour=seriesf)) +
+  scale_colour_manual(values = c("blue", "darkgreen", "purple")) +
+  scale_y_continuous(name="Percent (%)", breaks=seq(0, 30, 2), limits=c(0, 15)) +
+  # scale_x_continuous(name=xlab, breaks=c(seq(1975, 2015, 5), 2017)) +
+  scale_x_continuous(name=xlab, breaks=c(seq(1975, 2015, 5), 2018)) +
+  legend +
+  labs(caption=src) +
+  ggtitle(label=gtitle1, subtitle=gtitle2) +
+  theme_bw() +
+  theme(plot.title = element_text(size=rel(1.3), face="bold")) +
+  theme(plot.subtitle = element_text(size=rel(1), face="bold")) +
+  theme(axis.title = element_text(face="bold", size=rel(1))) +
+  theme(axis.text = element_text(face="bold", size=rel(1))) +
+  theme(plot.caption = element_text(hjust=0, size=rel(.5))) +
+  theme(legend.justification=c(1, 1), 
+        legend.position=c(1, 1),
+        legend.background = element_rect(color = "grey",  size=rel(0.5), linetype=1)) +
+  geom_line(size=rel(1.2)) +
+  geom_point(size=rel(1.5))
+p
+
+# ggsave("./results/motivation/invest_eror_pubpriv_vsriskfree_short.png", p, width=gwidth, height=gheight, units="in")
+ggsave("./results/motivation/invest_eror_pubpriv_vsriskfree_short_wide.png", 
+       p, width=12, height=6, units="in")
+
+ggsave("./results/motivation/invest_eror_pubpriv_vsriskfree_soa.png", 
+       p, width=8, height=6, units="in")
+
+wd <- 6
+ggsave("./results/motivation/invest_eror_pubpriv_vsriskfree_short_narrow.png", 
+       p, width=wd, height=wd*(3.6 / 4.8), units="in")
+
+
+write_csv(pdata, paste0("./results/motivation/invest_eror_pubpriv_vsriskfree_short_data.csv"))
+
+
+```
+
+
+## Investments in risky assets
+
+### Public and private plans risk assets - long term, quarterly
+```{r}
+fof.q <- readRDS("./data/fof.q.rds")
+
+pdata <- fof.q %>% 
+  filter(year(date) >= 1940) %>% 
+  mutate(slgppf=factor(slgppf, levels=c("slgdb", "ppfdb"), c("State & local", "Private")))
+
+gtitle1 <- "Equity-like investments as percentage of invested assets"
+gtitle2 <- "State and local government and private sector defined benefit pension plans"
+xlab <- "Calendar year"
+xlab <- NULL
+srcnote <- "\nSource: Authors' analysis of Z.1 Financial Accounts of the United States, Federal Reserve Board, Tables L.118.b, L.120.b, and L.122"
+p <- pdata %>%
+  ggplot(aes(x=date, y=equityshare, colour=slgppf)) +
+  geom_line(size=rel(1)) +
+  geom_point(size=rel(1)) +
+  scale_y_continuous(name="Percent (%)", breaks=seq(0, 100, 5), limits=c(0, 75)) +
+  scale_x_date(breaks=seq.Date(as.Date("1900-01-01"), as.Date("2020-01-01"), "5 years"),
+               minor_breaks = seq.Date(as.Date("1900-01-01"), as.Date("2020-01-01"), "1 year"),
+               date_labels = "%Y") +
+  scale_colour_manual(values=c("blue", "darkgreen")) +
+  legend +
+  labs(x=xlab, caption=srcnote) +
+  ggtitle(label=gtitle1, subtitle=gtitle2) +
+  theme_bw() +
+  theme(plot.title = element_text(size=rel(1.3), face="bold")) +
+  theme(plot.subtitle = element_text(size=rel(1), face="bold")) +
+  theme(axis.title = element_text(face="bold", size=rel(1))) +
+  theme(axis.text = element_text(face="bold", size=rel(1))) +
+  theme(plot.caption = element_text(hjust=0, size=rel(.5))) +
+  geom_line(size=rel(1)) +
+  geom_point(size=rel(1)) +
+  theme(panel.grid.major.x = element_line(size=0.1, colour="lightgrey"),
+          panel.grid.minor.x = element_line(linetype="dashed", size=0.1, colour="#d9d9d9"))
+p
+ggsave("./results/motivation/invest_equitysharesdb_long.png", p, width=gwidth, height=gheight, units="in")
+write_csv(pdata, "./results/motivation/invest_equitysharesdb_long_data.csv")
+
+```
+
+
+### Public and private plans risk assets - short term, annual
+```{r}
+fof.a <- readRDS("./data/fof.a.rds")
+
+pdata <- fof.a %>% filter(year(date) >= 1990) %>% 
+  mutate(slgppf=factor(slgppf, levels=c("slgdb", "ppfdb"), c("State & local", "Private")))
+
+gtitle1 <- "Equity-like investments as percentage of invested assets"
+gtitle2 <- "State and local government and private sector defined benefit pension plans"
+xlab <- "Calendar year"
+xlab <- NULL
+srcnote <- "\nSource: Authors' analysis of Z.1 Financial Accounts of the United States,\nFederal Reserve Board, Tables L.118.b, L.120.b, and L.122"
+p <- pdata %>%
+  ggplot(aes(x=date, y=equityshare, colour=slgppf)) +
+  geom_line(size=rel(1)) +
+  geom_point(size=rel(1)) +
+  scale_y_continuous(name="Percent (%)", breaks=seq(0, 100, 5), limits=c(0, 75)) +
+  scale_x_date(breaks=seq.Date(as.Date("1900-01-01"), as.Date("2020-01-01"), "5 years"), date_labels = "%Y") +
+  scale_colour_manual(values=c("blue", "darkgreen")) +
+  legend +
+  labs(x=xlab, caption=srcnote) +
+  ggtitle(label=gtitle1, subtitle=gtitle2) +
+  theme_bw() +
+  theme(plot.title = element_text(size=rel(1.3), face="bold")) +
+  theme(plot.subtitle = element_text(size=rel(1), face="bold")) +
+  theme(axis.title = element_text(face="bold", size=rel(1))) +
+  theme(axis.text = element_text(face="bold", size=rel(1))) +
+  theme(legend.justification=c(0, 1), 
+        legend.position=c(0, 1),
+        legend.background = element_rect(color = "grey",  size=rel(0.5), linetype=1)) +
+  theme(plot.caption = element_text(hjust=0, size=rel(.8))) +
+  geom_line(size=rel(1.2)) +
+  geom_point(size=rel(1.5))
+p
+
+ggsave("./results/motivation/invest_equitysharesdb_short.png", p, width=gwidth, height=gheight, units="in")
+
+wd <- 7
+ggsave("./results/motivation/invest_equitysharesdb_short_narrow.png", 
+       p, width=wd, height=wd*(3.6 / 4.8), units="in")
+
+write_csv(pdata, "./results/motivation/invest_equitysharesdb_short_data.csv")
+
+```
+
+
+## Contributions
+### Real per-capita employer and employee contributions
+
+```{r}
+# getNIPATable("1.1.5")
+
+# data setup ####
+baseyear <- 2017
+igdppi <- getgdppi("A") %>%
+  mutate(igdppi=gdppi[year==baseyear] / gdppi)
+
+# This is JUST US gdp, NOT state gdp
+gdp <- nipa %>% 
+  filter(vname=="A191RC", freq=="A") %>%
+  select(year, gdp=value)
+
+# glimpse(cenretss)
+# count(cenretss, variable)
+contrib <- cenretss %>% filter(admin==1, variable %in% c("eec", "erc")) %>%
+  select(stabbr, year, variable, value) %>%
+  left_join(igdppi %>% select(year, igdppi)) %>%
+  left_join(gdp) %>%
+  left_join(spop.a %>% select(stabbr, year, pop=value)) %>%
+  mutate(rvalpc=value * igdppi / pop,
+         valgdp=(value  / 1000) / gdp * 100) %>%
+  select(stabbr, year, variable, rvalpc, valgdp)
+
+contrib %>%
+  filter(stabbr=="US", variable=="erc")
+
+```
+
+
+#### United States
+```{r}
+
+pdata <- contrib %>% filter(stabbr=="US", year>=1975) %>%
+  mutate(varf=factor(variable, 
+                     levels=c("erc", "eec"), 
+                     labels=c("Employer contribution", "Employee contribution")))
+gtitle1 <- "Real per-capita employer and employee pension contributions"
+gtitle2 <- "State and locally administered plans combined, U.S. as a whole"
+src <- "
+Contributions from U.S. Bureau of the Census Annual Retirement Systems Survey
+Adjusted for inflation with GDP price index (BEA)"
+p <-  pdata %>%
+  ggplot(aes(year, rvalpc, colour=varf)) +
+  scale_y_continuous(name="Contributions per capita (2016 $)", breaks=seq(0, 600, 25), limits=c(0, 450)) +
+  scale_x_continuous(name=NULL, breaks=seq(1950, 2020, 5)) +
+  scale_colour_manual(values = c("darkgreen", "blue")) +
+  legend +
+  labs(caption=src) +
+  ggtitle(label=gtitle1, subtitle=gtitle2) +
+  theme_bw() +
+  theme(plot.title = element_text(size=rel(1.3), face="bold")) +
+  theme(plot.subtitle = element_text(size=rel(1), face="bold")) +
+  theme(axis.title = element_text(face="bold", size=rel(1))) +
+  theme(axis.text = element_text(face="bold", size=rel(1))) +
+  theme(plot.caption = element_text(hjust=0, size=rel(.5))) +
+  geom_line(size=rel(1)) +
+  geom_point(size=rel(1))
+p
+ggsave("./results/motivation/erc_eec_rpc.png", p, width=gwidth, height=gheight, units="in")
+write_csv(pdata, "./results/motivation/erc_eec_rpc_data.csv")
+
+```
+
+
+```{r}
+# percent of GDP
+pdata <- contrib %>% 
+  filter(stabbr=="US", year>=1975) %>%
+  mutate(varf=factor(variable, 
+                     levels=c("erc", "eec"), 
+                     labels=c("Employer contribution", "Employee contribution")))
+gtitle1 <- "Employer and employee pension contributions as % of Gross Domestic Product"
+gtitle2 <- "State and locally administered plans combined, U.S. as a whole"
+src <- "
+Contributions from U.S. Bureau of the Census Annual Retirement Systems Survey"
+p <-  pdata %>%
+  ggplot(aes(year, valgdp, colour=varf)) +
+  scale_y_continuous(name="Contributions as % of GDP", breaks=seq(0, 1, 0.1), limits=c(0, 0.8)) + # 
+  scale_x_continuous(name=NULL, breaks=seq(1950, 2020, 5)) +
+  scale_colour_manual(values = c("darkgreen", "blue")) +
+  legend +
+  labs(caption=src) +
+  ggtitle(label=gtitle1, subtitle=gtitle2) +
+  theme_bw() +
+  theme(plot.title = element_text(size=rel(1.3), face="bold")) +
+  theme(plot.subtitle = element_text(size=rel(1), face="bold")) +
+  theme(axis.title = element_text(face="bold", size=rel(1))) +
+  theme(axis.text = element_text(face="bold", size=rel(1))) +
+  theme(plot.caption = element_text(hjust=0, size=rel(.5))) +
+  geom_line(size=rel(1)) +
+  geom_point(size=rel(1))
+p
+ggsave("./results/motivation/erc_eec_pctgdp.png", p, width=gwidth, height=gheight, units="in")
+write_csv(pdata, "./results/motivation/erc_eec_pctgdp_data.csv")
+
+```
+
+
+
+#### Employer contribution, specific states
+```{r}
+
+slc <- c("AL", "AR", "FL", "GA", "KY", "LA", "MS", "MO", "NC", "OK", "SC", "TN", "TX", "VA", "WV")
+sts <- c(slc, "US")
+
+sts <- c("NY", "US")
+sts <- c("SC", "US")
+
+
+pdata <- contrib %>% filter(stabbr %in% sts, year>=1975, variable=="erc")
+
+gtitle1 <- "Real per-capita employer pension contributions"
+gtitle2 <- "State and locally administered plans combined"
+src <- "
+Contributions from U.S. Bureau of the Census Annual Retirement Systems Survey
+Adjusted for inflation with GDP price index (BEA)"
+p <-  pdata %>%
+  ggplot(aes(year, rvalpc, colour=stabbr)) +
+  scale_y_continuous(name="Contributions per capita (2015 $)", breaks=seq(0, 2000, 50), limits=c(0, NA)) + # 
+  scale_x_continuous(name=NULL, breaks=seq(1950, 2020, 5)) +
+  scale_colour_manual(values = c("darkgreen", "blue")) +
+  legend +
+  labs(caption=src) +
+  ggtitle(label=gtitle1, subtitle=gtitle2) +
+  theme_bw() +
+  theme(plot.title = element_text(size=rel(1.3), face="bold")) +
+  theme(plot.subtitle = element_text(size=rel(1), face="bold")) +
+  theme(axis.title = element_text(face="bold", size=rel(1))) +
+  theme(axis.text = element_text(face="bold", size=rel(1))) +
+  theme(plot.caption = element_text(hjust=0, size=rel(.5))) +
+  geom_line(size=rel(1)) +
+  geom_point(size=rel(1))
+p
+
+ggsave("./results/special/erc_rpc_scus.png", p, width=gwidth, height=gheight, units="in")
+write_csv(pdata, "./results/special/erc_rpc_scus_data.csv")
+
+
+ggsave("./results/special/erc_rpc_nyus.png", p, width=gwidth, height=gheight, units="in")
+write_csv(pdata, "./results/special/erc_rpc_nyus_data.csv")
+
+```
+
+
+## Map: real erc per capita in specific year
+```{r, echo=FALSE, warning=FALSE}
+# supress warnings that we'll get from windowsFonts
+glimpse(cenretss)
+count(cenretss, variable)
+
+baseyear <- 2017
+igdppi <- getgdppi("A") %>%
+  mutate(igdppi=gdppi[year==baseyear] / gdppi)
+
+# Adjustments to base and end:
+# WV: adjust for bond-funded 2007 contribution in WV -- use 2008 as base
+# AK: don't use 2015 as end -- state Constitutional Budget Reserve Fund funded contrib in AK in 2015
+# http://www.pionline.com/article/20140708/ONLINE/140709895/alaska-pension-funds-map-out-allocations-for-3-billion-state-contribution
+
+pdata <- cenretss %>% filter(admin==1, variable=="erc", year==2017) %>%
+  select(year, stabbr, erc=value) %>%
+  left_join(spop.a %>% select(year, stabbr, pop=value)) %>%
+  left_join(igdppi %>% select(-gdppi)) %>%
+  mutate(rerc.pc= erc / pop * igdppi) %>%
+  select(stabbr, rerc.pc) %>%
+  arrange(desc(rerc.pc))
+# summary(pdata)
+
+# cut(pdata$value, 4)
+cutpts <- c(-1e9, 300, 400, 500, 600, 1e9)
+pdata$pgroup <- cut(pdata$rerc.pc, cutpts, include.lowest=FALSE)
+count(pdata, pgroup)
+pdata %>% arrange(-rerc.pc) %>% kable(digits=1)
+(levs <- levels(pdata$pgroup))
+(labs <- levs)
+# labs <- c("  Decrease", "  >$0 - $100", "  >$100 - $200", "  >$200 - $300", "  >$300")
+labs <- c("  <= $300", "  >$300 - $400", "  >$400 - $500", "  >$500 - $600", "  >$600")
+cbind(levs, labs)
+
+# cols <- c("white", "", "", "", "")
+# cols <- c("white", colors$seq5blue[2:5]) # colors$r5[1]
+#cols <- c("white", "#a6d96a", "#1a9641", "#fdae61", "#d7191c")
+# cols <- c("white", "#eff3ff", "#fee0d2", "#fc9272", "#de2d26")
+cols <- c("lightgrey", "#1a9641", "#a6d96a", "#fdae61", "#d7191c")
+cols <- colors$b5
+cols <- colors$seq5blue
+
+mapdata <- merge(pdata, map48, by="stabbr") %>% arrange(order) # keep data sorted by polygon order
+# other approaches: scale_fill_brewer('% change', palette="RdBu") + # RdBu Reds Oranges RdPu YlOrBr OrRd
+gtitle1 <- "State & local government pension contributions in 2016"
+
+xtitle1 <- "Source: Author's analysis of Annual Survey of Public Pensions, U.S. Bureau of the Census"
+srcnote <- xtitle1
+p <- ggplot(mapdata, aes(x=long, y=lat, group=group)) +
+  geom_polygon(aes(fill=factor(pgroup, levels=levs, labels=labs))) +
+  geom_path(colour="gray", linetype=2) +
+  coord_map() + 
+  scale_fill_manual('Contributions in 2016 dollars\nper capita', values=cols, drop=FALSE) + 
+  labs(x=NULL) +
+  labs(caption=srcnote) +
+  labs(y=NULL) +
+  ggtitle(label=gtitle1) +
+  theme_bw() +
+  geom_text(data=stabbrmaplabels, aes(x=x, y=y, label=stabbr), colour="black", size=3, family=fam) + 
+  theme(plot.title=element_text(size=rel(1.3), face="bold")) +
+  theme(plot.subtitle=element_text(size=rel(1), face="bold")) +
+  theme(axis.title.x=element_text(size=rel(1), colour="black", hjust=0)) +
+  theme(axis.text.x=element_blank(), axis.ticks.x=element_blank()) +
+  theme(axis.text.y=element_blank(), axis.ticks.y=element_blank()) +
+  theme(panel.grid.major = element_blank()) +
+  theme(plot.caption = element_text(hjust=0, size=rel(.8)))
+p
+ggsave(plot=p, "./results/motivation/rercpc_map.png", width=gwidth, height=gheight) # use fixed dimensions for map
+write_csv(pdata, "./results/motivation/rercpc_map_data.csv")
+
+```
+
+
+
+## Map: change in erc per capita
+```{r, echo=FALSE, warning=FALSE}
+# supress warnings that we'll get from windowsFonts
+glimpse(cenretss)
+count(cenretss, variable)
+
+baseyear <- 2017
+igdppi <- getgdppi("A") %>%
+  mutate(igdppi=gdppi[year==baseyear] / gdppi)
+
+# # look for oddballs, to define base and end
+# tmp <- cenretss %>% filter(admin==1, variable=="erc", year>=2006) %>%
+#   select(year, stabbr, erc=value) %>%
+#   left_join(spop.a %>% select(year, stabbr, pop=value)) %>%
+#   left_join(igdppi %>% select(-gdppi)) %>% 
+#   mutate(rerc.pc= erc / pop * igdppi) %>%
+#   select(stabbr, year, rerc.pc) %>%
+#   spread(year, rerc.pc) %>%
+#   mutate(diff=`2016` - `2007`) %>%
+#   arrange(diff)
+# tmp %>% filter(stabbr %in% c("US", slc, c("NY", "CA", "CT", "KS", "IL")))
+
+# Adjustments to base and end:
+# WV: adjust for bond-funded 2007 contribution in WV -- use 2008 as base
+# AK: don't use 2015 as end -- state Constitutional Budget Reserve Fund funded contrib in AK in 2015
+# http://www.pionline.com/article/20140708/ONLINE/140709895/alaska-pension-funds-map-out-allocations-for-3-billion-state-contribution
+
+pdata <- cenretss %>% filter(admin==1, variable=="erc", year>=2006) %>%
+  select(year, stabbr, erc=value) %>%
+  left_join(spop.a %>% select(year, stabbr, pop=value)) %>%
+  left_join(igdppi %>% select(-gdppi)) %>% 
+  mutate(valtype=ifelse(year==2007 & stabbr!="WV", "base", NA),
+         valtype=ifelse(year==2008 & stabbr=="WV", "base", valtype),
+         valtype=ifelse(year==2017, "end", valtype)) %>%
+  filter(valtype %in% c("base", "end")) %>%
+  mutate(rerc.pc= erc / pop * igdppi) %>%
+  select(stabbr, valtype, rerc.pc) %>%
+  spread(valtype, rerc.pc)  %>%
+  mutate(rerc.pc.change=end - base, pch=rerc.pc.change / base *  100) %>%
+  arrange(desc(rerc.pc.change))
+# summary(pdata)
+
+# cut(pdata$value, 4)
+cutpts <- c(-1e9, 0, 75, 150, 300, 1e9)
+pdata$pgroup <- cut(pdata$rerc.pc.change, cutpts, include.lowest=FALSE)
+count(pdata, pgroup)
+pdata %>% arrange(-rerc.pc.change) %>% kable(digits=1)
+(levs <- levels(pdata$pgroup))
+# labs <- c("  Decrease", "  >$0 - $100", "  >$100 - $200", "  >$200 - $300", "  >$300")
+labs <- c("  Decrease", "  >$0 - $75", "  >$75 - $150", "  >$150 - $300", "  >$300")
+cbind(levs, labs)
+
+# cols <- c("white", "", "", "", "")
+# cols <- c("white", colors$seq5blue[2:5]) # colors$r5[1]
+#cols <- c("white", "#a6d96a", "#1a9641", "#fdae61", "#d7191c")
+# cols <- c("white", "#eff3ff", "#fee0d2", "#fc9272", "#de2d26")
+cols <- c("lightgrey", "#1a9641", "#a6d96a", "#fdae61", "#d7191c")
+
+stabbrmaplabels2 <- stabbrmaplabels %>% left_join(pdata) %>%
+  mutate(stabbr2=stabbr,
+         stabbr2=ifelse(rerc.pc.change>150, paste0(stabbr, "\n", round(rerc.pc.change, 0)), stabbr),
+         stabbr2=ifelse(stabbr=="RI", stabbr, stabbr2))
+
+mapdata <- merge(pdata, map48, by="stabbr") %>% arrange(order) # keep data sorted by polygon order
+# other approaches: scale_fill_brewer('% change', palette="RdBu") + # RdBu Reds Oranges RdPu YlOrBr OrRd
+gtitle1 <- "Change in state & local government pension contributions"
+gtitle2 <- "Inflation-adjusted dollars per capita, 2007 to 2017"
+
+xtitle1 <- "Source: Author's analysis of Annual Survey of Public Pensions, U.S. Bureau of the Census"
+xtitle2 <- "Note: Due to extraordinary contributions in West Virginia in 2007,
+contributions for 2008 were used as the base year"
+srcnote <- paste0("\n", xtitle1, "\n", xtitle2)
+p <- ggplot(mapdata, aes(x=long, y=lat, group=group)) +
+  geom_polygon(aes(fill=factor(pgroup, levels=levs, labels=labs))) +
+  geom_path(colour="gray", linetype=2) +
+  coord_map() + 
+  scale_fill_manual('change in 2017 dollars\nper capita', values=cols, drop=FALSE) + 
+  labs(x=NULL) +
+  labs(caption=srcnote) +
+  labs(y=NULL) +
+  ggtitle(label=gtitle1, subtitle=gtitle2) +
+  theme_bw() +
+  geom_text(data=stabbrmaplabels2, aes(x=x, y=y, label=stabbr2), colour="black", size=3, family=fam) + 
+  theme(plot.title=element_text(size=rel(1.3), face="bold")) +
+  theme(plot.subtitle=element_text(size=rel(1), face="bold")) +
+  theme(axis.title.x=element_text(size=rel(1), colour="black", hjust=0)) +
+  theme(axis.text.x=element_blank(), axis.ticks.x=element_blank()) +
+  theme(axis.text.y=element_blank(), axis.ticks.y=element_blank()) +
+  theme(panel.grid.major = element_blank()) +
+  theme(plot.caption = element_text(hjust=0, size=rel(.8)))
+p
+ggsave(plot=p, "./results/motivation/rercchg_map.png", width=gwidth, height=gheight) # use fixed dimensions for map
+write_csv(pdata, "./results/motivation/rercchg_map_data.csv")
+
+```
+
+
+# Consequences of risk-taking
+## ERC, national, compared to contributions needed to keep claims stable, over time
+```{r erc_data}
+glimpse(nipa)
+baseyear <- 2017
+tabvars <- getNIPATable("7.24")$vname %>% unique
+
+# write_csv(getNIPATable("7.24"), "D:/Dropbox/Open Projects/WSJ 2018/PensionsEtc2018/Table7.24info.csv")
+
+# 5 Actual employer contributions S251101
+# 6 Imputed employer contributions Y310RC1
+# 8 Less: Pension service charges \1\ Y327RC1
+# 13 Imputed interest on plans' claims on employers \3\ Y315RC1
+
+# lines <- c(5, 6, 8, 13) # select on lines to avoid duplicates of variables
+bvnames <- c("S25110", "Y310RC", "Y327RC", "Y315RC")
+vnames <- c("slgp_erc", "slgp_erc_imputed", "slgp_admin", "slgp_intclaims")
+
+pentab <- nipa %>% 
+  filter(vname %in% tabvars, freq=="A") %>%
+  filter(vname %in% bvnames)
+tmp <- count(pentab, line, vdesc, vname)
+glimpse(pentab)
+
+ercbea <- pentab %>%
+  mutate(vname=factor(vname, levels=bvnames, labels=vnames)) %>%
+  select(year, vname, value) %>%
+  mutate(value = value / 1000) %>% # put in $ billions djb 1/3/2018
+  spread(vname, value) %>%
+  mutate(er_nc=slgp_erc + slgp_erc_imputed, # don't subtract admin cost I think
+         # er_nc=slgp_erc + slgp_erc_imputed - slgp_admin,
+         erc_stableclaims=er_nc + slgp_intclaims,
+         erc_shortfall=erc_stableclaims - slgp_erc) %>%
+  left_join(getgdppi("A") %>% mutate(igdppi=gdppi[year==baseyear] / gdppi) %>% select(-gdppi)) %>%
+  mutate_at(vars(slgp_erc, erc_stableclaims, erc_shortfall), funs(r=. * igdppi))
+glimpse(ercbea)
+tail(ercbea)
+
+```
+
+
+```{r}
+vars <- c("slgp_erc_r", "erc_stableclaims_r", "erc_shortfall_r")
+labs <- c("Actual contributions", "Contributions if little risk-taking", "Shortfall")
+pdata <- ercbea %>% 
+  select(year, slgp_erc_r, erc_stableclaims_r, erc_shortfall_r) %>%
+  gather(variable, value, -year) %>%
+  mutate(varf=factor(variable, levels=vars, labels=labs)) %>%
+  filter(year>=1973, variable!="erc_shortfall_r")
+
+gtitle1 <- "State and local government inflation-adjusted pension contributions"
+gtitle2 <- "Versus contributions needed to keep unfunded liabilities from growing, if little risk taken"
+src <- "
+- 'Little-risk' contributions: Employer normal cost + interest on unfunded liability, as valued by U.S. Bureau of Economic Analysis (NIPA Table 7.24)
+- Actual contributions also NIPA Table 7.24
+- Adjusted for inflation with gross domestic product price index"
+p <- pdata %>% 
+  ggplot(aes(year, value, colour=varf)) +
+  geom_line(size=rel(1)) +
+  geom_point(size=rel(1)) +
+  scale_y_continuous(name="Billions of 2016 $", breaks=seq(0, 400, 25), limits=c(0, NA)) +
+  scale_x_continuous(name=NULL, breaks=seq(1950, 2020, 5)) +
+  scale_colour_manual(values = c("darkgreen", "blue")) +
+  legend +
+  labs(caption=src) +
+  ggtitle(label=gtitle1, subtitle=gtitle2) +
+  theme_bw() +
+  theme(plot.title = element_text(size=rel(1.3), face="bold")) +
+  theme(plot.subtitle = element_text(size=rel(1), face="bold")) +
+  theme(axis.title = element_text(face="bold", size=rel(1))) +
+  theme(axis.text = element_text(face="bold", size=rel(1))) +
+  theme(plot.caption = element_text(hjust=0, size=rel(.8))) +
+  theme(legend.justification=c(0, 1), legend.position=c(0, 1),
+        legend.background = element_rect(color = "grey",  size=0.5, linetype=1))
+p
+
+ggsave("./results/motivation/erc_vs_stable_claims_erc.png", p, width=gwidth, height=gheight, units="in")
+write_csv(pdata, "./results/motivation/erc_vs_stable_claims_erc_data.csv")
+
+```
+
+
+## ERC compared to contributions needed to keep claims stable, across states, per capita
+```{r}
+# ncint data
+uflint <- statepen.frb %>%
+  filter(vname=="ufl") %>%
+  select(stabbr, year, ufl=value) %>%
+  mutate(dr=ifelse(year %in% 2000:2003, .06, NA),
+         dr=ifelse(year %in% 2004:2009, .055, dr),
+         dr=ifelse(year %in% 2010:2017, .05, dr)) %>%
+  mutate(uflint= -ufl * dr,
+         year=year + 1) # this way we can align the UFL year with the upcoming year
+# count(uflint, year, dr)
+
+erc_ncint <- statepen.bea %>% 
+  filter(vname=="nc.er") %>% 
+  select(stabbr, year, nc.er=value) %>%
+  left_join(uflint) %>%
+  left_join(cenretss %>% 
+              filter(admin==1, variable=="erc") %>% 
+              select(stabbr, year, erc=value) %>% 
+              mutate(erc=erc / 1000)) %>%
+  left_join(sgdp.a %>% select(stabbr, year, sgdp=gdp)) %>%
+  left_join(spop.a %>% select(stabbr, year, spop=value)) %>%
+  group_by(stabbr) %>%
+  arrange(year) %>%
+  # mutate(uflintlag=lag(uflint),
+  #        ufllag=lag(ufl),
+  #        uflint=ifelse(year==2014, uflintlag, uflint)) %>% # fill in the missing year with an estimate
+  mutate(ncint=nc.er + uflint,
+         ncer.gdp=nc.er / sgdp * 100,
+         uflint.gdp=uflint / sgdp * 100,
+         ncint.gdp=ncint / sgdp * 100,
+         erc.gdp=erc / sgdp * 100, 
+         erc_pctnc=erc / nc.er * 100,
+         erc_pctncint=erc / ncint * 100,
+         ncint_erc=ncint - erc,
+         ncint_erc.gdp=ncint_erc / sgdp * 100,
+         ncint_erc.pop=ncint_erc * 1e3 / spop,
+         erc.pop=erc * 1e3 / spop) # pop is in +3, $ are in +6, so this gives per capita
+glimpse(erc_ncint)
+
+```
+
+
+### map erc shortfall vs (nc + interest), per capita 
+```{r}
+pdata <- erc_ncint %>% 
+  ungroup %>%
+  filter(year==2016, !stabbr %in% c("DC")) %>%
+  select(stabbr, year, value= ncint_erc.pop) %>%
+  arrange(desc(value))
+summary(pdata)
+
+# cut(pdata$ufl.gdp, 4)
+cutpts <- c(-1e9, 400, 600, 800, 1e9)
+pdata$pgroup <- cut(pdata$value, cutpts, right=FALSE, include.lowest=FALSE)
+count(pdata, pgroup)
+pdata %>% arrange(-value) %>% kable(digits=1)
+(levs <- levels(pdata$pgroup))
+labs <- c("  < $225", "  225 to < 300", "  300 to < 500", "  500 or more")
+cbind(levs, labs)
+
+# cols <- c("white", "", "", "", "")
+# cols <- c("white", colors$seq5blue[2:5]) # colors$r5[1]
+# cols <- c("lightgrey", "#a6d96a", "#1a9641", "#fdae61", "#d7191c")
+cols <- colors$seq4YlGnBu
+cols <- c("#1a9641", "#a6d96a", "#fdae61", "#d7191c")
+# "", "", "", "", "", "", "", 
+
+stabbrmaplabels2 <- stabbrmaplabels %>% left_join(pdata) %>%
+  mutate(stabbr2=stabbr,
+         stabbr2=ifelse(value>500, paste0(stabbr, "\n", round(value, 0)), stabbr),
+         stabbr2=ifelse(stabbr=="RI", stabbr, stabbr2))
+
+mapdata <- merge(pdata, map48, by="stabbr") %>% arrange(order) # keep data sorted by polygon order
+# other approaches: scale_fill_brewer('% change', palette="RdBu") + # RdBu Reds Oranges RdPu YlOrBr OrRd
+gtitle1 <- "Employer contributions shortfall relative to normal cost plus interest, 2016"
+gtitle2 <- "Per capita, state & locally administered plans combined"
+srcnote <- "Author's analysis and estimates based upon:
+- Employer contributions from Census Bureau Annual Retirement System Survey (https://www.census.gov/govs/retire)
+- Employer normal costs from Bureau of Economic Analysis (http://www.bea.gov/regional/xls/PensionEstimatesByState.xlsx)
+- Unfunded liabilities from Federal Reserve Board
+(https://www.federalreserve.gov/apps/fof/efa/efa-project-state-local-government-defined-benefit-pension-plans.htm)
+These numbers differ from actuaries' estimates, and reflect discounting at 5%."
+p <- ggplot(mapdata, aes(x=long, y=lat, group=group)) +
+  geom_polygon(aes(fill=factor(pgroup, levels=levs, labels=labs))) +
+  geom_path(colour="gray", linetype=2) +
+  coord_map() + 
+  scale_fill_manual('Shortfall per capita', values=cols, drop=FALSE) + 
+  geom_text(data=stabbrmaplabels2, aes(x=x, y=y, label=stabbr2), colour="black", size=2, family=fam) + 
+  labs(y=NULL, x=NULL) +
+  labs(caption=srcnote) +
+  ggtitle(label=gtitle1, subtitle=gtitle2)
+# now add all theme elements
+p2 <- p + theme_bw() +
+  theme(plot.title=element_text(size=rel(1.3), face="bold")) +
+  theme(plot.subtitle=element_text(size=rel(1), face="bold")) +
+  theme(axis.title.x=element_text(size=rel(1), colour="black", hjust=0)) +
+  theme(axis.text.x=element_blank(), axis.ticks.x=element_blank()) +
+  theme(axis.text.y=element_blank(), axis.ticks.y=element_blank()) +
+  theme(panel.grid.major = element_blank()) +
+  theme(plot.caption = element_text(hjust=0, size=rel(.8)))
+p2 
+
+ggsave(plot=p2, "./results/motivation/ncint_erc.pop_map_2016.png", width=gwidth, height=gheight)
+write_csv(pdata, "./results/motivation/ncint_erc.pop_data_2016.csv")
+
+```
+
+
+### map erc as % of (nc + interest)
+```{r}
+# map erc as % of (nc + interest) ####
+pdata <- erc_ncint %>% 
+  filter(year==2016, !stabbr %in% c("DC")) %>%
+  select(stabbr, year, value=erc_pctncint) %>%
+  arrange(desc(value))
+summary(pdata)
+
+# cut(pdata$ufl.gdp, 4)
+cutpts <- c(0, 40, 50, 60, 1e9)
+pdata$pgroup <- cut(pdata$value, cutpts, right=FALSE, include.lowest=FALSE)
+count(pdata, pgroup)
+pdata %>% arrange(-value) %>% kable(digits=1)
+(levs <- levels(pdata$pgroup))
+labs <- c("  < 40%", "  40% to < 50%", "  50% to < 60%", "  60% or more")
+cbind(levs, labs)
+
+cols <- c("#1a9641", "#a6d96a", "#fdae61", "#d7191c") %>% rev
+# "", "", "", "", "", "", "", 
+
+stabbrmaplabels2 <- stabbrmaplabels %>% left_join(pdata) %>%
+  mutate(stabbr2=stabbr,
+         stabbr2=ifelse(value<40, paste0(stabbr, "\n", round(value, 1)), stabbr),
+         stabbr2=ifelse(stabbr=="RI", stabbr, stabbr2))
+
+mapdata <- merge(pdata, map48, by="stabbr") %>% arrange(order) # keep data sorted by polygon order
+# other approaches: scale_fill_brewer('% change', palette="RdBu") + # RdBu Reds Oranges RdPu YlOrBr OrRd
+gtitle1 <- "Employer contributions as % of normal cost plus interest, 2016"
+gtitle2 <- "State & locally administered plans combined"
+
+srcnote <- "Author's analysis and estimates based upon:
+- Employer contributions from Census Bureau Annual Retirement System Survey (https://www.census.gov/govs/retire)
+- Employer normal costs from Bureau of Economic Analysis (http://www.bea.gov/regional/xls/PensionEstimatesByState.xlsx)
+- Unfunded liabilities from Federal Reserve Board
+(https://www.federalreserve.gov/apps/fof/efa/efa-project-state-local-government-defined-benefit-pension-plans.htm)
+These numbers differ from actuaries' estimates, and reflect discounting at 5%."
+
+p <- ggplot(mapdata, aes(x=long, y=lat, group=group)) +
+  geom_polygon(aes(fill=factor(pgroup, levels=levs, labels=labs))) +
+  geom_path(colour="gray", linetype=2) +
+  coord_map() + 
+  scale_fill_manual('Contribution as % of\nNormal cost + interest', values=cols, drop=FALSE) + 
+  geom_text(data=stabbrmaplabels2, aes(x=x, y=y, label=stabbr2), colour="black", size=2, family=fam) + 
+  labs(y=NULL, x=NULL) +
+  labs(caption=srcnote) +
+  ggtitle(label=gtitle1, subtitle=gtitle2)
+# now add all theme elements
+p2 <- p + theme_bw() +
+  theme(plot.title=element_text(size=rel(1.3), face="bold")) +
+  theme(plot.subtitle=element_text(size=rel(1), face="bold")) +
+  theme(axis.title.x=element_text(size=rel(1), colour="black", hjust=0)) +
+  theme(axis.text.x=element_blank(), axis.ticks.x=element_blank()) +
+  theme(axis.text.y=element_blank(), axis.ticks.y=element_blank()) +
+  theme(panel.grid.major = element_blank()) +
+  theme(plot.caption = element_text(hjust=0, size=rel(.8)))
+p2
+
+ggsave(plot=p2, "./results/motivation/erc_pctncint_map_2016.png", width=gwidth, height=gheight)
+write_csv(pdata, "./results/motivation/erc_pctncint_map_data_2016.csv")
+
+```
+
+
+### map erc shortfall vs (nc + interest), % of state GDP 
+```{r}
+# ncint_erc.gdp 
+pdata <- erc_ncint %>% 
+  ungroup %>%
+  filter(year==2015, !stabbr %in% c("DC")) %>%
+  select(stabbr, year, value= ncint_erc.gdp) %>%
+  arrange(desc(value))
+summary(pdata)
+
+# cut(pdata$value, 4)
+cutpts <- c(-1e9, .5, .75, 1, 1e9)
+pdata$pgroup <- cut(pdata$value, cutpts, right=FALSE, include.lowest=FALSE)
+count(pdata, pgroup)
+pdata %>% arrange(-value) %>% kable(digits=1)
+(levs <- levels(pdata$pgroup))
+labs <- c("  < 0.5%", "  0.5% to < 0.75%", "  0.75% to < 1%", "  1% or more")
+cbind(levs, labs)
+
+# cols <- c("white", "", "", "", "")
+# cols <- c("white", colors$seq5blue[2:5]) # colors$r5[1]
+# cols <- c("lightgrey", "#a6d96a", "#1a9641", "#fdae61", "#d7191c")
+cols <- colors$seq4YlGnBu
+cols <- c("#1a9641", "#a6d96a", "#fdae61", "#d7191c")
+# "", "", "", "", "", "", "", 
+
+stabbrmaplabels2 <- stabbrmaplabels %>% left_join(pdata) %>%
+  mutate(stabbr2=stabbr,
+         stabbr2=ifelse(value>500, paste0(stabbr, "\n", round(value, 0)), stabbr),
+         stabbr2=ifelse(stabbr=="RI", stabbr, stabbr2))
+
+mapdata <- merge(pdata, map48, by="stabbr") %>% arrange(order) # keep data sorted by polygon order
+# other approaches: scale_fill_brewer('% change', palette="RdBu") + # RdBu Reds Oranges RdPu YlOrBr OrRd
+gtitle1 <- "Employer contributions shortfall relative to normal cost plus interest, 2015"
+gtitle2 <- "As % of state GDP, state & locally administered plans combined"
+srcnote <- "Author's analysis and estimates based upon:
+- Employer contributions from Census Bureau Annual Retirement System Survey (https://www.census.gov/govs/retire)
+- Employer normal costs from Bureau of Economic Analysis (http://www.bea.gov/regional/xls/PensionEstimatesByState.xlsx)
+- Unfunded liabilities from Federal Reserve Board
+(https://www.federalreserve.gov/apps/fof/efa/efa-project-state-local-government-defined-benefit-pension-plans.htm)
+These numbers differ from actuaries' estimates, and reflect discounting at 5%."
+p <- ggplot(mapdata, aes(x=long, y=lat, group=group)) +
+  geom_polygon(aes(fill=factor(pgroup, levels=levs, labels=labs))) +
+  geom_path(colour="gray", linetype=2) +
+  coord_map() + 
+  scale_fill_manual('Shortfall, % of GDP', values=cols, drop=FALSE) + 
+  geom_text(data=stabbrmaplabels2, aes(x=x, y=y, label=stabbr2), colour="black", size=2, family=fam) + 
+  labs(y=NULL, x=NULL) +
+  labs(caption=srcnote) +
+  ggtitle(label=gtitle1, subtitle=gtitle2)
+# now add all theme elements
+p2 <- p + theme_bw() +
+  theme(plot.title=element_text(size=rel(1.3), face="bold")) +
+  theme(plot.subtitle=element_text(size=rel(1), face="bold")) +
+  theme(axis.title.x=element_text(size=rel(1), colour="black", hjust=0)) +
+  theme(axis.text.x=element_blank(), axis.ticks.x=element_blank()) +
+  theme(axis.text.y=element_blank(), axis.ticks.y=element_blank()) +
+  theme(panel.grid.major = element_blank()) +
+  theme(plot.caption = element_text(hjust=0, size=rel(.8)))
+p2 
+
+ggsave(plot=p2, "./results/motivation/ncint_erc.gdp_map_2015.png", width=gwidth, height=gheight)
+write_csv(pdata, "./results/motivation/ncint_erc.gdp_data_2015.csv")
+
+```
+
+
+
+
+
+
+
+## ERC compared to contributions needed to pay NC PLUS amort 30 year level, across states, per capita
+```{r}
+# amort_cd(p, i, m, end) # constant dollar amortization
+# amort_cd(100, .04, 30, TRUE)
+# amort_cd(100:102, c(.04, .05, .06), 30, TRUE)
+pmt(100, .04, 30, end=TRUE)
+
+library("ptools")
+
+# ncint data
+uflamort <- statepen.frb %>%
+  filter(vname=="ufl") %>%
+  select(stabbr, year, ufl=value) %>%
+  mutate(dr=ifelse(year %in% 2000:2003, .06, NA),
+         dr=ifelse(year %in% 2004:2009, .055, dr),
+         dr=ifelse(year %in% 2010:2016, .05, dr),
+         dr=ifelse(year %in% 2017:2017, .04, dr)) %>%
+  mutate(amortcd30=-pmt(ufl, dr, 30, TRUE),
+         year=year + 1) # this way we can align the UFL year with the upcoming year
+# count(uflamort, year, dr)
+ht(uflamort)
+
+erc_ncamort <- statepen.bea %>% 
+  filter(vname=="nc.er") %>% 
+  select(stabbr, year, nc.er=value) %>%
+  left_join(uflamort) %>%
+  left_join(cenretss %>% 
+              filter(admin==1, variable=="erc") %>% 
+              select(stabbr, year, erc=value) %>% 
+              mutate(erc=erc / 1000)) %>%
+  left_join(sgdp.a %>% select(stabbr, year, sgdp=gdp)) %>%
+  left_join(spop.a %>% select(stabbr, year, spop=value)) %>%
+  group_by(stabbr) %>%
+  arrange(year) %>%
+  # mutate(uflintlag=lag(uflint),
+  #        ufllag=lag(ufl),
+  #        uflint=ifelse(year==2014, uflintlag, uflint)) %>% # fill in the missing year with an estimate
+  mutate(ncamort=nc.er + amortcd30,
+         ncer.gdp=nc.er / sgdp * 100,
+         amortcd30.gdp=amortcd30 / sgdp * 100,
+         ncamort.gdp=ncamort / sgdp * 100,
+         erc.gdp=erc / sgdp * 100, 
+         erc_pctnc=erc / nc.er * 100,
+         erc_pctncamort=erc / ncamort * 100,
+         ncamort_erc=ncamort - erc,
+         ncamort_erc.gdp=ncamort_erc / sgdp * 100,
+         ncamort_erc.pop=ncamort_erc * 1e3 / spop,
+         erc.pop=erc * 1e3 / spop) # pop is in +3, $ are in +6, so this gives per capita
+glimpse(erc_ncamort)
+
+```
+
+
+
+
+### map erc shortfall vs (nc + amort level 30), per capita 
+```{r}
+pdata <- erc_ncamort %>% 
+  ungroup %>%
+  filter(year==2016, !stabbr %in% c("DC")) %>%
+  select(stabbr, year, value=ncamort_erc.pop) %>%
+  arrange(desc(value))
+summary(pdata)
+
+# cut(pdata$value, 4)
+cutpts <- c(-1e9, 500, 750, 1000, 1e9)
+pdata$pgroup <- cut(pdata$value, cutpts, right=FALSE, include.lowest=FALSE)
+count(pdata, pgroup)
+pdata %>% arrange(-value) %>% kable(digits=1)
+(levs <- levels(pdata$pgroup))
+labs <- c("   < $500", "   500 to < 750", "   750 to < 1,000", " 1,000 or more")
+cbind(levs, labs)
+
+# cols <- c("white", "", "", "", "")
+# cols <- c("white", colors$seq5blue[2:5]) # colors$r5[1]
+# cols <- c("lightgrey", "#a6d96a", "#1a9641", "#fdae61", "#d7191c")
+cols <- colors$seq4YlGnBu
+cols <- c("#1a9641", "#a6d96a", "#fdae61", "#d7191c")
+# "", "", "", "", "", "", "", 
+
+stabbrmaplabels2 <- stabbrmaplabels %>% left_join(pdata) %>%
+  mutate(stabbr2=stabbr,
+         stabbr2=ifelse(value>500, paste0(stabbr, "\n", round(value, 0)), stabbr),
+         stabbr2=ifelse(stabbr=="RI", stabbr, stabbr2))
+
+mapdata <- merge(pdata, map48, by="stabbr") %>% arrange(order) # keep data sorted by polygon order
+# other approaches: scale_fill_brewer('% change', palette="RdBu") + # RdBu Reds Oranges RdPu YlOrBr OrRd
+gtitle1 <- "Employer contributions shortfall relative to normal cost plus 30-year level amortization, 2016"
+gtitle2 <- "Per capita, state & locally administered plans combined"
+srcnote <- "Author's analysis and estimates based upon:
+- Employer contributions from Census Bureau Annual Retirement System Survey (https://www.census.gov/govs/retire)
+- Employer normal costs from Bureau of Economic Analysis (http://www.bea.gov/regional/xls/PensionEstimatesByState.xlsx)
+- Unfunded liabilities from Federal Reserve Board
+(https://www.federalreserve.gov/apps/fof/efa/efa-project-state-local-government-defined-benefit-pension-plans.htm)
+These numbers differ from actuaries' estimates, and reflect discounting at 5%."
+p <- ggplot(mapdata, aes(x=long, y=lat, group=group)) +
+  geom_polygon(aes(fill=factor(pgroup, levels=levs, labels=labs))) +
+  geom_path(colour="gray", linetype=2) +
+  coord_map() + 
+  scale_fill_manual('Shortfall per capita', values=cols, drop=FALSE) + 
+  geom_text(data=stabbrmaplabels2, aes(x=x, y=y, label=stabbr2), colour="black", size=2, family=fam) + 
+  labs(y=NULL, x=NULL) +
+  labs(caption=srcnote) +
+  ggtitle(label=gtitle1, subtitle=gtitle2)
+# now add all theme elements
+p2 <- p + theme_bw() +
+  theme(plot.title=element_text(size=rel(1.3), face="bold")) +
+  theme(plot.subtitle=element_text(size=rel(1), face="bold")) +
+  theme(axis.title.x=element_text(size=rel(1), colour="black", hjust=0)) +
+  theme(axis.text.x=element_blank(), axis.ticks.x=element_blank()) +
+  theme(axis.text.y=element_blank(), axis.ticks.y=element_blank()) +
+  theme(panel.grid.major = element_blank()) +
+  theme(plot.caption = element_text(hjust=0, size=rel(.8)))
+p2 
+
+ggsave(plot=p2, "./results/motivation/ncamort30_erc.pop_map_2016.png", width=gwidth, height=gheight)
+write_csv(pdata, "./results/motivation/ncamort30_erc.pop_data_2016.csv")
+
+```
+
+
+
+
+### One Standard deviation shortfall
+```{r}
+shortfall <- fof.q %>% filter(year(date)>=2014, slgppf=="slgdb") %>%
+  select(date, finassets, redirect, invassets, slgtax) %>%
+  mutate(onesdshort= .12 * invassets,
+         shortpcttax= onesdshort / slgtax * 100)
+shortfall
+
+```
+
+
+
+## Benefits per capita
+```{r}
+glimpse(cenretss)
+count(cenretss, variable)
+ben <- cenretss %>%
+  filter(year==2016, admin==1, variable=="benefits") %>%
+  select(year, stabbr, benefits=value) %>%
+  left_join(spop.a %>% select(year, stabbr, pop=value)) %>%
+  mutate(benpc=benefits / pop)
+ben %>% arrange(-benpc)
+# SC is $619 vs US $875, NY $1,504
+# SC #33 of states
+
+```
+

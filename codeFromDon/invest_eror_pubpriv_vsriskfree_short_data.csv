@@ -1,0 +1,88 @@
+fyear,series,value,seriesf
+1990,public,7.76,State-local average assumed return
+1991,public,7.81,State-local average assumed return
+1992,public,7.83,State-local average assumed return
+1993,public,7.835,State-local average assumed return
+1994,public,7.84,State-local average assumed return
+1995,public,7.84,State-local average assumed return
+1996,public,7.84,State-local average assumed return
+1997,public,7.859999999999999,State-local average assumed return
+1998,public,7.88,State-local average assumed return
+1999,public,7.895,State-local average assumed return
+2000,public,7.91,State-local average assumed return
+2001,public,8.021290322580645,State-local average assumed return
+2002,public,8.021337579617835,State-local average assumed return
+2003,public,7.980981595092025,State-local average assumed return
+2004,public,7.961964023525645,State-local average assumed return
+2005,public,7.945536344844875,State-local average assumed return
+2006,public,7.941894358689719,State-local average assumed return
+2007,public,7.923605443557097,State-local average assumed return
+2008,public,7.908505355600496,State-local average assumed return
+2009,public,7.883433224475876,State-local average assumed return
+2010,public,7.847252051566242,State-local average assumed return
+2011,public,7.774235693108736,State-local average assumed return
+2012,public,7.7137265648054845,State-local average assumed return
+2013,public,7.677159518891384,State-local average assumed return
+2014,public,7.633437499999999,State-local average assumed return
+2015,public,7.589176136363636,State-local average assumed return
+2016,public,7.501703580889157,State-local average assumed return
+2017,public,NA,State-local average assumed return
+2018,public,NA,State-local average assumed return
+1990,private,NA,Private average assumed return
+1991,private,NA,Private average assumed return
+1992,private,NA,Private average assumed return
+1993,private,8.214,Private average assumed return
+1994,private,8.145,Private average assumed return
+1995,private,7.987,Private average assumed return
+1996,private,7.972,Private average assumed return
+1997,private,7.71,Private average assumed return
+1998,private,7.495,Private average assumed return
+1999,private,7.961,Private average assumed return
+2000,private,8.052,Private average assumed return
+2001,private,7.761,Private average assumed return
+2002,private,7.469,Private average assumed return
+2003,private,7.267,Private average assumed return
+2004,private,6.816,Private average assumed return
+2005,private,6.643,Private average assumed return
+2006,private,6.472,Private average assumed return
+2007,private,6.307,Private average assumed return
+2008,private,6.512,Private average assumed return
+2009,private,6.181,Private average assumed return
+2010,private,5.721,Private average assumed return
+2011,private,5.112,Private average assumed return
+2012,private,4.36,Private average assumed return
+2013,private,NA,Private average assumed return
+2014,private,NA,Private average assumed return
+2015,private,NA,Private average assumed return
+2016,private,NA,Private average assumed return
+2017,private,NA,Private average assumed return
+2018,private,NA,Private average assumed return
+1990,DGS10,8.27904,10-year Treasury yield
+1991,DGS10,8.316345381526105,10-year Treasury yield
+1992,DGS10,7.497649402390438,10-year Treasury yield
+1993,DGS10,6.402,10-year Treasury yield
+1994,DGS10,6.09888,10-year Treasury yield
+1995,DGS10,7.30436,10-year Treasury yield
+1996,DGS10,6.217529880478088,10-year Treasury yield
+1997,DGS10,6.60168,10-year Treasury yield
+1998,DGS10,5.8364,10-year Treasury yield
+1999,DGS10,5.107569721115538,10-year Treasury yield
+2000,DGS10,6.169246031746032,10-year Treasury yield
+2001,DGS10,5.44632,10-year Treasury yield
+2002,DGS10,4.985951417004048,10-year Treasury yield
+2003,DGS10,3.9558,10-year Treasury yield
+2004,DGS10,4.27956,10-year Treasury yield
+2005,DGS10,4.2345019920318725,10-year Treasury yield
+2006,DGS10,4.58764,10-year Treasury yield
+2007,DGS10,4.763505976095617,10-year Treasury yield
+2008,DGS10,4.1402,10-year Treasury yield
+2009,DGS10,3.2954,10-year Treasury yield
+2010,DGS10,3.5466932270916334,10-year Treasury yield
+2011,DGS10,3.0785657370517927,10-year Treasury yield
+2012,DGS10,2.082430278884462,10-year Treasury yield
+2013,DGS10,1.8214112903225805,10-year Treasury yield
+2014,DGS10,2.70868,10-year Treasury yield
+2015,DGS10,2.2298804780876496,10-year Treasury yield
+2016,DGS10,2.019402390438247,10-year Treasury yield
+2017,DGS10,2.09884,10-year Treasury yield
+2018,DGS10,2.57372,10-year Treasury yield

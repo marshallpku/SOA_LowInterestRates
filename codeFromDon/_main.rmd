@@ -1,0 +1,97 @@
+---
+title: "Pensions Master Presentation"
+author: "Don Boyd"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+output:
+  pdf_document:
+    toc: yes
+    toc_depth: '4'
+  html_document:
+    toc: yes
+    toc_depth: 4
+    toc_float: yes
+---
+
+
+```{r runall, eval=FALSE, echo=FALSE}
+# put date back above!
+# date: '`r format(Sys.time(), ''%B %d, %Y'')`'
+
+# When we want a final report, run the following code selectively "by hand" (interactively) -- NEVER using Knit with eval=TRUE
+
+# knitr::opts_chunk$set(cache=FALSE)
+# `r opts_chunk$set(cache=FALSE)`
+getwd()
+
+rmdfn <- "./_main.Rmd" # this file
+outfn <- paste0("Pensions_", format(Sys.time(), "%Y-%m-%d"), ".html")
+rmarkdown::render(rmdfn, output_format="html_document", output_file=outfn)
+
+getwd()
+
+# It is safest to fully exit RStudio and restart it before running the whole thing. Otherwise knitr can get confused
+# and include repetitive information in the output html file.
+# Alternatively delete the prior html file before running and maybe clear history.
+
+```
+
+
+```{r setup, echo=FALSE, cache=FALSE}
+# knitr::clean_cache(clean = FALSE, path = opts_chunk$get("cache.path"))
+options(width=120)
+knitr::opts_chunk$set(fig.width=14, fig.height=10, echo=FALSE, warning=FALSE, message=FALSE)
+# Note: when saving maps (ggsave), width=16, height=9 seems to get rid of white space
+
+# NOTE: Don't put ANYTHING in child code blocks - it won't be run! Even a comment will generate a warning
+
+```
+
+
+```{r startup}
+source("./programs/loadlibs.r")
+source("./programs/globals.r")
+source("./programs/graph_params.r")
+source("./programs/functions.r")
+source("./programs/mapsetup.r")
+
+# overrides
+# This seems to be good for Powerpoint widescreen
+# note - copy the png file from Windows Explorer into the ppt file, not other methods
+gwidth <- 12 # 9 # allow 1/2" margin on each side of slide
+gheight <- 6 #  6 # allow 1.5" for ppt slide title
+
+
+```
+
+
+```{r ONETIME_data_setup, eval=FALSE}
+# ONETIME data setup - only run when data changes
+source("./programs/ONETIME_rates.r")
+source("./programs/ONETIME_fof.r")
+
+```
+
+
+```{r load_data}
+rates.all <- readRDS("./data/rates.all.rds")
+fof.q <- readRDS("./data/fof.q.rds")
+fof.a <- readRDS("./data/fof.a.rds")
+
+```
+
+
+```{r childMotivation, child="childMotivation.rmd", eval=FALSE}
+```
+
+
+```{r childRiskAnalysis, child="childRiskAnalysis.rmd", eval=FALSE}
+```
+
+
+```{r childDemographics, child="childDemographics.rmd", eval=FALSE}
+```
+
+
+```{r childExplore, child="childExplore.rmd", eval=TRUE}
+```
+
