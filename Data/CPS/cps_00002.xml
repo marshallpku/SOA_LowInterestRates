@@ -1,0 +1,1519 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="ipums-ddi-xslt.xsl"?>
+<codeBook xmlns="ddi:codebook:2_5" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="ddi:codebook:2_5 http://www.ddialliance.org/Specification/DDI-Codebook/2.5/XMLSchema/codebook.xsd" version="2.5" ID="ddi2-151739_cps_00002.dat-cps.ipums.org">
+  <docDscr>
+    <citation>
+      <titlStmt>
+        <titl>Codebook for an IPUMS-CPS Data Extract</titl>
+        <subTitl>DDI 2.5 metadata describing the extract file  'cps_00002.dat'</subTitl>
+        <IDNo>ddi2-151739_cps_00002.dat-cps.ipums.org</IDNo>
+      </titlStmt>
+      <rspStmt>
+        <AuthEnty affiliation="University of Minnesota">Minnesota Population Center</AuthEnty>
+      </rspStmt>
+      <prodStmt>
+        <producer abbr="MPC" affiliation="University of Minnesota" role="Documentation">Minnesota Population Center</producer>
+        <prodDate date="2019-08-04">August 4, 2019</prodDate>
+        <prodPlac>Minnesota Population Center, 50 Willey Hall, 225 - 19th Avenue South, Minneapolis, MN 55455</prodPlac>
+      </prodStmt>
+      <distStmt>
+        <contact affiliation="University of Minnesota" URI="http://pop.umn.edu">Minnesota Population Center</contact>
+      </distStmt>
+    </citation>
+  </docDscr>
+  <stdyDscr>
+    <citation>
+      <titlStmt>
+        <titl>User Extract cps_00002.dat</titl>
+      </titlStmt>
+      <rspStmt>
+        <AuthEnty affiliation="University of Minnesota">Minnesota Population Center</AuthEnty>
+      </rspStmt>
+      <prodStmt>
+        <producer abbr="MPC" affiliation="University of Minnesota" role="Documentation">Minnesota Population Center</producer>
+        <prodDate date="2019-08-04">August 4, 2019</prodDate>
+        <prodPlac>Minnesota Population Center, 50 Willey Hall, 225 - 19th Avenue South, Minneapolis, MN 55455</prodPlac>
+      </prodStmt>
+      <distStmt>
+        <contact affiliation="University of Minnesota" URI="http://pop.umn.edu">Minnesota Population Center</contact>
+      </distStmt>
+      <serStmt>
+        <serName abbr="cps">IPUMS-CPS</serName>
+        <serInfo>DOI:10.18128/D030.V6.0</serInfo>
+      </serStmt>
+      <verStmt>
+        <version date="2019-08-04"/>
+      </verStmt>
+    </citation>
+    <stdyInfo>
+      <subject>
+        <topcClas vocab="IPUMS">Technical Variables -- HOUSEHOLD</topcClas>
+        <topcClas vocab="IPUMS">Linking Variables -- HOUSEHOLD</topcClas>
+        <topcClas vocab="IPUMS">Technical Variables -- PERSON</topcClas>
+        <topcClas vocab="IPUMS">Linking Variables -- PERSON</topcClas>
+        <topcClas vocab="IPUMS">Income Variables -- PERSON</topcClas>
+      </subject>
+      <sumDscr ID="sdatref-2656">
+        <timePrd event="single" date="2013-03">2013-03</timePrd>
+        <nation abbr="us">United States</nation>
+      </sumDscr>
+      <sumDscr ID="sdatref-2949">
+        <timePrd event="single" date="2018-03">2018-03</timePrd>
+        <nation abbr="us">United States</nation>
+      </sumDscr>
+      <notes><![CDATA[Additional notes on a sample that is part of this study:  IPUMS-CPS, ASEC 2013; regular size
+]]></notes>
+      <notes><![CDATA[Additional notes on a sample that is part of this study:  IPUMS-CPS, ASEC 2018; regular size
+]]></notes>
+    </stdyInfo>
+    <dataAccs>
+      <useStmt>
+        <confDec required="no"><![CDATA[None]]></confDec>
+        <contact affiliation="Minnesota Population Center" URI="http://cps.ipums.org/">IPUMS-CPS</contact>
+        <citReq><![CDATA[Publications and research reports based on the IPUMS-CPS database must cite it appropriately. The citation should include the following:
+
+Sarah Flood,  Miriam King,  Renae Rodgers,  Steven Ruggles and J. Robert Warren. Integrated Public Use Microdata Series, Current Population Survey: Version 6.0 [dataset]. Minneapolis, MN: IPUMS, 2018. https://doi.org/10.18128/D030.V6.0
+
+The licensing agreement for use of IPUMS-CPS data requires that users supply us with the title and full citation for any publications, research reports, or educational materials making use of the data or documentation. Please add your citation to the IPUMS bibliography: http://bibliography.ipums.org/]]></citReq>
+        <conditions><![CDATA[Users of IPUMS-CPS data must agree to abide by the conditions of use. A user's license is valid for one year and may be renewed.  Users must agree to the following conditions:
+
+(1) No fees may be charged for use or distribution of the data.  All persons are granted a limited license to use these data, but you may not charge a fee for the data if you distribute it to others.
+
+(2) Cite IPUMS appropriately.  For information on proper citation,  refer to the citation requirement section of this DDI document.
+
+(3) Tell us about any work you do using the IPUMS.  Publications, research  reports, or presentations making use of IPUMS-CPS should be added to our  Bibliography. Continued funding for the IPUMS depends on our ability to  show our sponsor agencies that researchers are using the data for productive  purposes.
+
+(4) Use it for GOOD -- never for EVIL.]]></conditions>
+        <disclaimer>The user of the data acknowledges that the original collector of the data, the authorized distributor of the data, and the relevant funding agency bear no responsibility for use of the data or for interpretations or inferences based upon such uses.</disclaimer>
+      </useStmt>
+    </dataAccs>
+    <notes><![CDATA[User-provided description:  Revision of 00001]]></notes>
+    <notes>This extract is a revision of the user's previous extract, number 1.</notes>
+  </stdyDscr>
+  <fileDscr ID="ExtractData">
+    <fileTxt>
+      <fileName>cps_00002.dat</fileName>
+      <fileCont>Microdata records</fileCont>
+      <fileStrc type="rectangular">
+      </fileStrc>
+      <fileType charset="ISO-8859-1">ISO-8859-1 data file</fileType>
+      <format>fixed length fields</format>
+      <filePlac>Minnesota Population Center, 50 Willey Hall, 225 - 19th Avenue South, Minneapolis, MN 55455</filePlac>
+    </fileTxt>
+  </fileDscr>
+  <dataDscr>
+    <var ID="YEAR" files="ExtractData" name="YEAR" intrvl="contin" dcml="0">
+      <location StartPos="1" width="4" EndPos="4"/>
+      <labl>Survey year</labl>
+      <txt><![CDATA[YEAR reports the year in which the survey was conducted.  YEARP is repeated on person records.]]></txt>
+      <codInstr><![CDATA[
+YEAR is a 4-digit numeric value.]]></codInstr>
+      <concept vocab="IPUMS">Technical Variables -- HOUSEHOLD</concept>
+      <varFormat schema="other" type="numeric"/>
+    </var>
+    <var ID="SERIAL" files="ExtractData" name="SERIAL" intrvl="contin" dcml="0">
+      <location StartPos="5" width="5" EndPos="9"/>
+      <labl>Household serial number</labl>
+      <txt><![CDATA[SERIAL is an identifying number unique to each household in a given survey month and year.  All person records are assigned the same serial number as the household record they follow.  A combination of YEAR, MONTH, and SERIAL provides a within-sample unique identifier for every household in IPUMS-CPS; YEAR, SERIAL, and PERNUM uniquely identify every person in the database within sample.
+
+SERIAL is a new value generated for IPUMS-CPS and should not be confused with the household serial number created by the Census Bureau and included in the original CPS data.]]></txt>
+      <codInstr><![CDATA[
+SERIAL is a 5-digit numeric variable.]]></codInstr>
+      <concept vocab="IPUMS">Technical Variables -- HOUSEHOLD</concept>
+      <varFormat schema="other" type="numeric"/>
+    </var>
+    <var ID="MONTH" files="ExtractData" name="MONTH" intrvl="discrete" dcml="0">
+      <location StartPos="10" width="2" EndPos="11"/>
+      <labl>Month</labl>
+      <txt><![CDATA[MONTH indicates the calendar month of the CPS interview.]]></txt>
+      <catgry>
+        <catValu>01</catValu>
+        <labl>January</labl>
+      </catgry>
+      <catgry>
+        <catValu>02</catValu>
+        <labl>February</labl>
+      </catgry>
+      <catgry>
+        <catValu>03</catValu>
+        <labl>March</labl>
+      </catgry>
+      <catgry>
+        <catValu>04</catValu>
+        <labl>April</labl>
+      </catgry>
+      <catgry>
+        <catValu>05</catValu>
+        <labl>May</labl>
+      </catgry>
+      <catgry>
+        <catValu>06</catValu>
+        <labl>June</labl>
+      </catgry>
+      <catgry>
+        <catValu>07</catValu>
+        <labl>July</labl>
+      </catgry>
+      <catgry>
+        <catValu>08</catValu>
+        <labl>August</labl>
+      </catgry>
+      <catgry>
+        <catValu>09</catValu>
+        <labl>September</labl>
+      </catgry>
+      <catgry>
+        <catValu>10</catValu>
+        <labl>October</labl>
+      </catgry>
+      <catgry>
+        <catValu>11</catValu>
+        <labl>November</labl>
+      </catgry>
+      <catgry>
+        <catValu>12</catValu>
+        <labl>December</labl>
+      </catgry>
+      <concept vocab="IPUMS">Technical Variables -- HOUSEHOLD</concept>
+      <varFormat schema="other" type="numeric"/>
+    </var>
+    <var ID="CPSID" files="ExtractData" name="CPSID" intrvl="contin" dcml="0">
+      <location StartPos="12" width="14" EndPos="25"/>
+      <labl>CPSID, household record</labl>
+      <txt><![CDATA[CPSID is an IPUMS-CPS defined variable that uniquely identifies households across CPS samples. The first six digits of CPSID index the four-digit year and two-digit month that the household was first in the CPS. CPSID allows users to link a household record across samples, based on the 4-8-4 rotation pattern, by assigning a unique CPSID value based on a combination of household identifiers. CPSID will only ever appear for a maximum of 8 times, which is the number of times a household may be observed in the CPS survey (as indexed by MIS). In some cases, a household will appear fewer than 8 times due to migration, mortality, non-response, and recording errors. CPSID Extensive documentation about the creation of CPSID is available elsewhere [URL omitted from DDI.].
+
+CPSID may also be used to link ASEC respondents who are in the March Basic Monthly file to other months of CPS data. This linking is made possible by IPUMS through the creation of MARBASECIDP. Users should note that ASEC oversample households (as indicated by ASECOVERH) will always have a CPSID value of 0.
+
+Users may also want to see CPSIDP for more information about linking individuals across time using a person-specific version of CPSID.]]></txt>
+      <codInstr><![CDATA[
+CPSID is a 14-digit numeric variable.]]></codInstr>
+      <concept vocab="IPUMS">Linking Variables -- HOUSEHOLD</concept>
+      <varFormat schema="other" type="numeric"/>
+    </var>
+    <var ID="ASECFLAG" files="ExtractData" name="ASECFLAG" intrvl="discrete" dcml="0">
+      <location StartPos="26" width="1" EndPos="26"/>
+      <labl>Flag for ASEC</labl>
+      <txt><![CDATA[ASECFLAG indicates whether the respondent is part of the ASEC or the March Basic. This variable is useful for users who wish to distinguish ASEC and March Basic files in their extracts. See further information [URL omitted from DDI.] about the ASEC versus the March Basic Monthly Files.]]></txt>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>ASEC</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>March Basic</labl>
+      </catgry>
+      <concept vocab="IPUMS">Technical Variables -- HOUSEHOLD</concept>
+      <varFormat schema="other" type="numeric"/>
+    </var>
+    <var ID="ASECWTH" files="ExtractData" name="ASECWTH" intrvl="contin" dcml="4">
+      <location StartPos="27" width="10" EndPos="36"/>
+      <labl>Annual Social and Economic Supplement Household weight</labl>
+      <txt><![CDATA[ASECWTH is a household-level weight that should be used to generate statistics about households in March Annual Social and Economic (ASEC) Supplement data. The CPS uses a complex stratified sampling scheme, and ASECWTH must be used to produce unbiased household-level statistics from the IPUMS-CPS ASEC data. For analyses of non-ASEC data, researchers should use HWTFINL. For individual-level analyses, researchers should use WTFINL,  ASECWT, or EARNWT. 
+
+ASECWTH generally has the same value as WTSUPP for the household head or reference person. Vacant housing units and households that could not be interviewed due to residents' absence or refusal to participate have a value of zero in HWTSUPP; such sampled units were included in the public use CPS data beginning in 1988. 
+
+Estimates on the entire population are prepared by projecting forward the resident population from the last available census. These projections are derived by updating the demographic census data from a number of other data sources that account for death, births and net migration. About 3 years after every census (i.e. 2003 for the 2000 Census and 2013 for the 2010 Census), the Census Bureau updates its independent population control and provides a new weight for the relevant years.
+
+Two important points should be noted here. First, the lag between when the Census is conducted and when the CPS weights are updated is about 3 years. While the Census data are being processed, the CPS files are made available using the weighting scheme from the US Census prior to the latest Census. Second, once the files are updated, the old weights become obsolete and are replaced in the IPUMS data extract system. Published estimates from the lag years that use the old weights are not always updated. For example, 2010 poverty estimates were released in ASEC using the 2000 population controls. Once the 2010 population controls were made available, IPUMS-CPS replaced the ASEC 2010, 2011, and 2012 weights that are based on the 2000 population control with weights that are based on the 2010 population controls.
+
+IPUMS-CPS makes available only the most up-to-date weights. The old values are available here: Old SPM and Weights Values [URL omitted from DDI.].]]></txt>
+      <codInstr><![CDATA[
+ASECWTH is a 10-digit numeric variable with four implied decimals.  That is, 1234567890 should be interpreted as 123456.7890.  The IPUMS command files automatically divide ASECWTH by 10,000, so no further adjustment is needed.]]></codInstr>
+      <concept vocab="IPUMS">Technical Variables -- HOUSEHOLD</concept>
+      <varFormat schema="other" type="numeric"/>
+    </var>
+    <var ID="PERNUM" files="ExtractData" name="PERNUM" intrvl="contin" dcml="0">
+      <location StartPos="37" width="2" EndPos="38"/>
+      <labl>Person number in sample unit</labl>
+      <txt><![CDATA[PERNUM numbers all persons within each household consecutively (starting with "1") in the order in which they are listed in the original CPS data.  When combined with YEAR , MONTH, and SERIAL, PERNUM uniquely identifies each person within IPUMS-CPS samples, though not across IPUMS-CPS samples.]]></txt>
+      <codInstr><![CDATA[
+PERNUM is a 2-digit numeric variable.]]></codInstr>
+      <concept vocab="IPUMS">Technical Variables -- PERSON</concept>
+      <varFormat schema="other" type="numeric"/>
+    </var>
+    <var ID="CPSIDP" files="ExtractData" name="CPSIDP" intrvl="contin" dcml="0">
+      <location StartPos="39" width="14" EndPos="52"/>
+      <labl>CPSID, person record</labl>
+      <txt><![CDATA[CPSIDP is an IPUMS-CPS defined variable that uniquely identifies individuals across CPS samples. The first six digits of CPSIDP index the four-digit year and two-digit month that the household was first in the CPS. CPSIDP allows users to link a respondent appearing with a designated household roster line number (LINENO) across samples, based on the 4-8-4 rotation pattern, by assigning a unique CPSIDP value to this line number. CPSIDP will only ever appear for a maximum of 8 times, which is the number of times a household may be observed in the CPS survey (as indexed by MISH). In some cases, individuals will appear fewer than 8 times due to migration, mortality, non-response, and recording errors. Extensive documentation about the creation of CPSIDP is available elsewhere [URL omitted from DDI.].
+
+Users should note that it is important to verify CPSIDP linkages with AGE, SEX, and RACE. In some cases CPSIDP will result in erroneous links, which are due to errors in the source data. Cases with the same CPSIDP value may also have inconsistent responses across samples due to errors on the part of the respondent or in recording the response.  Ultimately, it is up to the individual researcher to determine the acceptability of the linkages made using CPSIDP. 
+
+CPSIDP may also be used to link ASEC respondents who are in the March Basic Monthly file to other months of CPS data. This linking is made possible by IPUMS through the creation of MARBASECIDP. 
+
+To get started using CPSIDP, users may want to sort their data file by CPSIDP and MISH to create a person-time file. 
+
+Users should take care when including the March Basic or ASEC as part of their linking. Respondents who are part of the ASEC oversample (as indicated by ASECOVERP) have a CPSIDP value of 0.  For further information about the relationship between the March Basic and the ASEC, please see our additional documentation [URL omitted from DDI.].]]></txt>
+      <codInstr><![CDATA[
+CPSIDP is a 14-digit numeric variable.]]></codInstr>
+      <concept vocab="IPUMS">Linking Variables -- PERSON</concept>
+      <varFormat schema="other" type="numeric"/>
+    </var>
+    <var ID="ASECWT" files="ExtractData" name="ASECWT" intrvl="contin" dcml="4">
+      <location StartPos="53" width="10" EndPos="62"/>
+      <labl>Annual Social and Economic Supplement Weight</labl>
+      <txt><![CDATA[ASECWT is a person-level weight that should be used in analyses of individual-level CPS supplement data. Since the CPS relies on a complex stratified sampling scheme, it is essential to use one of the provided weighting variables.
+
+Researchers should use WTFINL rather than ASECWT when they wish to conduct person-level analyses of non-ASEC data. EARNWT should be used for any analysis including a small number of person-level variables (EARNWEEK, HOURWAGE, PAIDHOUR, and UNION). Researchers should use  ASECWTH for household-level analyses.
+
+User Caution: For analyses that include the 2014 ASEC sample, please see the comparability tab.
+
+The ASEC CPS files include two groups of people who are not included in the production of published labor force statistics: (1) members of the armed services, and (2) members of the Hispanic oversample who were interviewed in months other than March. WTFINL and EARNWT assign these groups a value of 0. Both groups are assigned non-zero values in ASECWT.
+
+ASECWT is based on the inverse probability of selection into the sample and adjustments for the following factors: failure to obtain an interview; sampling within large sample units; the known distribution of the entire population according to age, sex, and race; over-sampling Hispanic persons; to give husbands and wives the same weight; and an additional step to provide consistency with labor force estimates from the basic survey. 
+
+Estimates on the entire population are prepared by projecting forward the resident population from the last available census. These projections are derived by updating the demographic census data from a number of other data sources that account for death, births and net migration. About 3 years after every census (i.e. 2003 for the 2000 Census and 2013 for the 2010 Census), the Census Bureau updates its independent population control and provides a new weight for the relevant years.
+
+Two important points should be noted here. First, the lag between when the Census is conducted and when the CPS weights are updated is about 3 years. While the Census data are being processed, the CPS files are made available using the weighting scheme from the US Census prior to the latest Census. Second, once the files are updated, the old weights become obsolete and are replaced in the IPUMS data extract system. Published estimates from the lag years that use the old weights are not always updated. For example, 2010 poverty estimates were released in ASEC using the 2000 population controls. Once the 2010 population controls were made available, IPUMS-CPS replaced the ASEC 2010, 2011, and 2012 weights that are based on the 2000 population control with weights that are based on the 2010 population controls. IPUMS-CPS makes available only the most up-to-date weights.]]></txt>
+      <codInstr><![CDATA[
+ASECWT is a 10-digit numeric variable with four implied decimal places. That is, values of 0012345600 should be interpreted as 1,234.56.  The IPUMS command files automatically divide ASECWT by 10,000, so no further adjustment is needed.]]></codInstr>
+      <concept vocab="IPUMS">Technical Variables -- PERSON</concept>
+      <varFormat schema="other" type="numeric"/>
+    </var>
+    <var ID="FTOTVAL" files="ExtractData" name="FTOTVAL" intrvl="contin" dcml="0">
+      <location StartPos="63" width="10" EndPos="72"/>
+      <labl>Total family income</labl>
+      <txt><![CDATA[FTOTVAL reports the total income for the respondent's family. Amounts are expressed as they were reported to the interviewer (i.e., in the survey year's dollar amounts). Users may want to adjust for inflation using Consumer Price Index [URL omitted from DDI.] adjustment factors.]]></txt>
+      <codInstr><![CDATA[
+Note: Values are as they appear in the original CPS data. Top-codes, bottom-codes, and NIU codes have not been harmonized by the IPUMS.
+
+1968-1975
+50000 = Top Code (50,000 and greater)
+999999 = NIU 
+
+Values in all years can be negative.
+
+
+See User Note [URL omitted from DDI.] for an explanation of these codes.]]></codInstr>
+      <concept vocab="IPUMS">Income Variables -- PERSON</concept>
+      <varFormat schema="other" type="numeric"/>
+    </var>
+    <var ID="INCTOT" files="ExtractData" name="INCTOT" intrvl="contin" dcml="0">
+      <location StartPos="73" width="8" EndPos="80"/>
+      <labl>Total personal income</labl>
+      <txt><![CDATA[INCTOT indicates each respondent's total pre-tax personal income or losses from all sources for the previous calendar year.  Amounts are expressed as they were reported to the interviewer; users must adjust for inflation using Consumer Price Index [URL omitted from DDI.] adjustment factors.]]></txt>
+      <codInstr><![CDATA[
+99999999 = N.I.U. (Not in Universe).
+99999998 = Missing.
+Values can be negative.
+
+See User Note [URL omitted from DDI.] for an explanation of these codes, and the Topcodes Tables [URL omitted from DDI.] page for documentation on income component topcodes over time.]]></codInstr>
+      <concept vocab="IPUMS">Income Variables -- PERSON</concept>
+      <varFormat schema="other" type="numeric"/>
+    </var>
+    <var ID="INCWAGE" files="ExtractData" name="INCWAGE" intrvl="contin" dcml="0">
+      <location StartPos="81" width="7" EndPos="87"/>
+      <labl>Wage and salary income</labl>
+      <txt><![CDATA[INCWAGE indicates each respondent's total pre-tax wage and salary income--that is, money received as an employee--for the previous calendar year.  Amounts are expressed as they were reported to the interviewer; users must adjust for inflation using Consumer Price Index [URL omitted from DDI.] adjustment factors. 
+
+For ASEC samples 1988-onward, INCWAGE is derived from a Census recode variable.  The topcoded components of INCWAGE are OINCWAGE and INCLONGJ.  OINCWAGE  is always a component of INCWAGE.  When SRCEARN indicates that INCLONGJ is earned from wage and salary, INCLONGJ is an additional component of INCWAGE.]]></txt>
+      <codInstr><![CDATA[
+9999999 = N.I.U. (Not in Universe).
+9999998 = Missing.
+
+		
+IPUMS does not identify topcodes in the data.  Refer to the Topcodes Tables link below for income topcodes documentation.
+
+
+See User Note [URL omitted from DDI.] for an explanation of these codes, and the Topcodes Tables [URL omitted from DDI.] page for documentation on income component topcodes over time.]]></codInstr>
+      <concept vocab="IPUMS">Income Variables -- PERSON</concept>
+      <varFormat schema="other" type="numeric"/>
+    </var>
+    <var ID="INCFARM" files="ExtractData" name="INCFARM" intrvl="contin" dcml="0">
+      <location StartPos="88" width="7" EndPos="94"/>
+      <labl>Farm income</labl>
+      <txt><![CDATA[INCFARM indicates each respondent's net pre-income-tax earnings as a tenant farmer, sharecropper, or operator of his or her own farm during the previous calendar year.  INCFARM collects income information for self-employed persons who had their own farms.  Income earned as an employee on a farm is contained in the variable INCWAGE.  
+
+Amounts are expressed as they were reported to the interviewer; users must adjust for inflation using Consumer Price Index [URL omitted from DDI.] adjustment factors. 
+
+For ASEC samples 1988-onward, INCFARM is derived from a Census recode variable.  The topcoded components of INCFARM are OINCFARM and INCLONGJ.  OINCFARM  is always a component of INCFARM.  When SRCEARN indicates that INCLONGJ is earned from farm self-employment, INCLONGJ is an additional component of INCFARM.]]></txt>
+      <codInstr><![CDATA[
+9999999 = N.I.U. (Not in Universe).
+9999998 = Missing.
+Values can be negative.
+
+		
+IPUMS does not identify topcodes in the data.  Refer to the Topcodes Tables link below for income topcodes documentation.
+
+See User Note [URL omitted from DDI.] for an explanation of these codes, and the Topcodes Tables [URL omitted from DDI.] page for documentation on income component topcodes over time.]]></codInstr>
+      <concept vocab="IPUMS">Income Variables -- PERSON</concept>
+      <varFormat schema="other" type="numeric"/>
+    </var>
+    <var ID="INCSS" files="ExtractData" name="INCSS" intrvl="contin" dcml="0">
+      <location StartPos="95" width="5" EndPos="99"/>
+      <labl>Social Security income</labl>
+      <txt><![CDATA[INCSS indicates how much pre-tax income (if any) the respondent received from Social Security or U.S. government Railroad Retirement insurance payments (for 1968-1979) or from Social Security payments exclusively (1980 forward).  
+
+Amounts are expressed as they were reported to the interviewer; users must adjust for inflation using Consumer Price Index [URL omitted from DDI.] adjustment factors.]]></txt>
+      <codInstr><![CDATA[
+99999 = N.I.U. (Not in Universe).
+
+See User Note [URL omitted from DDI.] for an explanation of these codes, and the Topcodes Tables [URL omitted from DDI.] page for documentation on income component topcodes over time.]]></codInstr>
+      <concept vocab="IPUMS">Income Variables -- PERSON</concept>
+      <varFormat schema="other" type="numeric"/>
+    </var>
+    <var ID="INCWELFR" files="ExtractData" name="INCWELFR" intrvl="contin" dcml="0">
+      <location StartPos="100" width="5" EndPos="104"/>
+      <labl>Welfare (public assistance) income</labl>
+      <txt><![CDATA[INCWELFR indicates how much pre-tax income (if any) the respondent received during the previous calendar year from various public assistance programs commonly referred to as "welfare."
+
+Totals are given as they were reported to CPS interviewers; users must adjust for the effects of inflation using Consumer Price Index [URL omitted from DDI.] adjustment factors.]]></txt>
+      <codInstr><![CDATA[
+99999 = N.I.U. (Not in Universe).
+
+See User Note [URL omitted from DDI.] for an explanation of these codes, and the Topcodes Tables [URL omitted from DDI.] page for documentation on income component topcodes over time.]]></codInstr>
+      <concept vocab="IPUMS">Income Variables -- PERSON</concept>
+      <varFormat schema="other" type="numeric"/>
+    </var>
+    <var ID="INCRETIR" files="ExtractData" name="INCRETIR" intrvl="contin" dcml="0">
+      <location StartPos="105" width="6" EndPos="110"/>
+      <labl>Retirement income</labl>
+      <txt><![CDATA[INCRETIR indicates how much pre-tax income (if any) the respondent received from a pension or retirement income from a previous employer or union, or from other retirement income (excluding Social Security and Veterans' Administration payments).   The survey questionnaire listed the following types of retirement income: company or union pension, including profit sharing; annuities; U.S. military retirement; federal government employee pensions; state or local government employee pensions; U.S. Railroad Retirement; regular payments from annuities or paid-up insurance policies; and other sources such as IRA or KEOUGH accounts.
+
+Amounts are expressed as they were reported to the interviewer; users must adjust for inflation using Consumer Price Index [URL omitted from DDI.] adjustment factors.]]></txt>
+      <codInstr><![CDATA[
+999999 = N.I.U. (Not in Universe).
+
+See User Note [URL omitted from DDI.] for an explanation of these codes, and the Topcodes Tables [URL omitted from DDI.] page for documentation on income component topcodes over time.]]></codInstr>
+      <concept vocab="IPUMS">Income Variables -- PERSON</concept>
+      <varFormat schema="other" type="numeric"/>
+    </var>
+    <var ID="INCSSI" files="ExtractData" name="INCSSI" intrvl="contin" dcml="0">
+      <location StartPos="111" width="5" EndPos="115"/>
+      <labl>Income from SSI</labl>
+      <txt><![CDATA[INCSSI indicates how much pre-tax income (if any) the respondent received from Supplemental Security Income (SSI) during the previous calendar year.
+
+Amounts are expressed as they were reported to the interviewer; users must adjust for inflation using Consumer Price Index [URL omitted from DDI.] adjustment factors.]]></txt>
+      <codInstr><![CDATA[
+99999 = N.I.U. (Not in Universe).
+
+See User Note [URL omitted from DDI.] for an explanation of these codes, and the Topcodes Tables [URL omitted from DDI.] page for documentation on income component topcodes over time.]]></codInstr>
+      <concept vocab="IPUMS">Income Variables -- PERSON</concept>
+      <varFormat schema="other" type="numeric"/>
+    </var>
+    <var ID="INCINT" files="ExtractData" name="INCINT" intrvl="contin" dcml="0">
+      <location StartPos="116" width="5" EndPos="120"/>
+      <labl>Income from interest</labl>
+      <txt><![CDATA[INCINT indicates how much pre-tax income (if any) the respondent received from  interest on saving accounts, certificates of deposit, money market funds, bonds, treasury notes, IRAs, and/or other investments which paid interest.
+
+Amounts are expressed as they were reported to the interviewer; users must adjust for inflation using Consumer Price Index [URL omitted from DDI.] adjustment factors.]]></txt>
+      <codInstr><![CDATA[
+99999 = N.I.U. (Not in Universe).
+99997 = Top Code.
+
+See User Note [URL omitted from DDI.] for an explanation of these codes.]]></codInstr>
+      <concept vocab="IPUMS">Income Variables -- PERSON</concept>
+      <varFormat schema="other" type="numeric"/>
+    </var>
+    <var ID="INCUNEMP" files="ExtractData" name="INCUNEMP" intrvl="contin" dcml="0">
+      <location StartPos="121" width="5" EndPos="125"/>
+      <labl>Income from unemployment benefits</labl>
+      <txt><![CDATA[INCUNEMP indicates how much pre-tax income (if any) the respondent received from state or federal unemployment compensation, Supplemental Unemployment Benefits (SUB), or union unemployment or strike benefits during the previous calendar year.  
+
+Amounts are expressed as they were reported to the interviewer; users must adjust for inflation using Consumer Price Index [URL omitted from DDI.] adjustment factors.]]></txt>
+      <codInstr><![CDATA[
+99999 = N.I.U. (Not in Universe).
+99997 = Top Code.
+
+See User Note [URL omitted from DDI.] for an explanation of these codes, and the Topcodes Tables [URL omitted from DDI.] page for documentation on income component topcodes over time.]]></codInstr>
+      <concept vocab="IPUMS">Income Variables -- PERSON</concept>
+      <varFormat schema="other" type="numeric"/>
+    </var>
+    <var ID="INCWKCOM" files="ExtractData" name="INCWKCOM" intrvl="contin" dcml="0">
+      <location StartPos="126" width="5" EndPos="130"/>
+      <labl>Income from worker's compensation</labl>
+      <txt><![CDATA[INCWKCOM indicates how much pre-tax income (if any) the respondent received from worker's compensation payments or other payments as a result as a job-related injury or illness.  Income from sick pay and disability retirement were not counted as income under INCWKCOM.
+
+Amounts are expressed as they were reported to the interviewer; users must adjust for inflation using Consumer Price Index [URL omitted from DDI.] adjustment factors.]]></txt>
+      <codInstr><![CDATA[
+99999 = N.I.U. (Not in Universe).
+99997 = Top Code.
+
+See User Note [URL omitted from DDI.] for an explanation of these codes, and the Topcodes Tables [URL omitted from DDI.] page for documentation on income component topcodes over time.]]></codInstr>
+      <concept vocab="IPUMS">Income Variables -- PERSON</concept>
+      <varFormat schema="other" type="numeric"/>
+    </var>
+    <var ID="INCVET" files="ExtractData" name="INCVET" intrvl="contin" dcml="0">
+      <location StartPos="131" width="5" EndPos="135"/>
+      <labl>Income from veteran's benefits</labl>
+      <txt><![CDATA[INCVET indicates how much pre-tax income (if any) the respondent received from payments from the Veterans' Administration (VA) during the previous calendar year.  Such payments could include service-related disability compensation, survivor benefits, pension, educational allowance, or other veteran payments.
+
+Amounts are expressed as they were reported to the interviewer; users must adjust for inflation using Consumer Price Index [URL omitted from DDI.] adjustment factors.]]></txt>
+      <codInstr><![CDATA[
+99999 = N.I.U. (Not in Universe).
+99997 = Top Code (1994-onward).  For other years, see the Topcodes tables link below.
+
+See User Note [URL omitted from DDI.] for an explanation of these codes, and the Topcodes Tables [URL omitted from DDI.] page for documentation on income component topcodes over time.]]></codInstr>
+      <concept vocab="IPUMS">Income Variables -- PERSON</concept>
+      <varFormat schema="other" type="numeric"/>
+    </var>
+    <var ID="INCSURV" files="ExtractData" name="INCSURV" intrvl="contin" dcml="0">
+      <location StartPos="136" width="6" EndPos="141"/>
+      <labl>Income from survivor's benefits</labl>
+      <txt><![CDATA[INCSURV indicates how much pre-tax income (if any) the respondent received from survivors' benefits during the previous calendar year.  Such payments could include the following: company or union survivor pension; federal government civil service pension; U.S. military retirement survivor pension; state or local government survivor pension; worker's compensation survivor pension; black lung survivor pension; regular payments from an estate or trust; and regular payments from annuities or paid-up insurance policies.  Social Security and Veterans' Administration payments were specifically excluded from this category; payments from these sources are given in INCSS and INCVET, respectively.
+
+Amounts are expressed as they were reported to the interviewer; users must adjust for inflation using Consumer Price Index [URL omitted from DDI.] adjustment factors.]]></txt>
+      <codInstr><![CDATA[
+999999 = N.I.U. (Not in Universe).
+
+See User Note [URL omitted from DDI.] for an explanation of these codes, and the Topcodes Tables [URL omitted from DDI.] page for documentation on income component topcodes over time.]]></codInstr>
+      <concept vocab="IPUMS">Income Variables -- PERSON</concept>
+      <varFormat schema="other" type="numeric"/>
+    </var>
+    <var ID="INCDISAB" files="ExtractData" name="INCDISAB" intrvl="contin" dcml="0">
+      <location StartPos="142" width="6" EndPos="147"/>
+      <labl>Income from disability benefits</labl>
+      <txt><![CDATA[INCDISAB indicates how much pre-tax income (if any) the respondent received from disability income during the previous calendar year.   
+
+CPS interviewers asked about income as a result of disability only if at least one member of the household had "a health condition or disability which prevents them from working or which limits the kind or amount of work they can do" or had "ever retired or left a job for health reasons."  If the answer was affirmative, the interviewer asked which household member (or members) had such a health condition and whether this person received income as a result of this health condition, disability, or handicap.
+
+Income due to disability could come from the following sources: worker's compensation; company or union disability; federal government civil service disability; U.S. military retirement disability; state or local government employee disability; U.S. Railroad Retirement disability; accident or disability insurance; black lung miner's disability; or state temporary sickness payments. Income from Social Security and payments from the Veterans' Administration were not included in INCDISAB; such payments were included in INCSS and INCVET, respectively.  
+
+Amounts are expressed as they were reported to the interviewer; users must adjust for inflation using Consumer Price Index [URL omitted from DDI.] adjustment factors.]]></txt>
+      <codInstr><![CDATA[
+999999 = N.I.U. (Not in Universe).
+
+See User Note [URL omitted from DDI.] for an explanation of these codes, and the Topcodes Tables [URL omitted from DDI.] page for documentation on income component topcodes over time.]]></codInstr>
+      <concept vocab="IPUMS">Income Variables -- PERSON</concept>
+      <varFormat schema="other" type="numeric"/>
+    </var>
+    <var ID="INCDIVID" files="ExtractData" name="INCDIVID" intrvl="contin" dcml="0">
+      <location StartPos="148" width="6" EndPos="153"/>
+      <labl>Income from dividends</labl>
+      <txt><![CDATA[INCDIVID indicates how much pre-tax income (if any) the respondent received from stocks and mutual funds during the previous calendar year.
+
+Amounts are expressed as they were reported to the interviewer; users must adjust for inflation using Consumer Price Index [URL omitted from DDI.] adjustment factors.]]></txt>
+      <codInstr><![CDATA[
+999999 = N.I.U. (Not in Universe).
+
+		
+99997 = Topcode (1988-1998).  For other years, see the Topcodes Tables link below.
+
+See User Note [URL omitted from DDI.] for an explanation of these codes, and the Topcodes Tables [URL omitted from DDI.] page for documentation on income component topcodes over time.]]></codInstr>
+      <concept vocab="IPUMS">Income Variables -- PERSON</concept>
+      <varFormat schema="other" type="numeric"/>
+    </var>
+    <var ID="INCRENT" files="ExtractData" name="INCRENT" intrvl="contin" dcml="0">
+      <location StartPos="154" width="5" EndPos="158"/>
+      <labl>Income from rent</labl>
+      <txt><![CDATA[INCRENT indicates how much pre-tax income (if any) the respondent received from rent (after expenses), from charges to roomers or boarders, and from money paid by estates, trusts, and royalties, during the previous calendar year.
+
+Amounts are expressed as they were reported to the interviewer; users must adjust for inflation using Consumer Price Index [URL omitted from DDI.] adjustment factors.]]></txt>
+      <codInstr><![CDATA[
+99999 = N.I.U. (Not in Universe).
+
+		
+99997 = Topcode (1988-1998, 2011-onward).  For other years, see the Topcodes Tables link below.
+
+See User Note [URL omitted from DDI.] for an explanation of these codes, and the Topcodes Tables [URL omitted from DDI.] page for documentation on income component topcodes over time.]]></codInstr>
+      <concept vocab="IPUMS">Income Variables -- PERSON</concept>
+      <varFormat schema="other" type="numeric"/>
+    </var>
+    <var ID="INCEDUC" files="ExtractData" name="INCEDUC" intrvl="contin" dcml="0">
+      <location StartPos="159" width="5" EndPos="163"/>
+      <labl>Income from educational assistance</labl>
+      <txt><![CDATA[INCEDUC indicates how much pre-tax income (if any) the respondent received from educational assistance during the previous calendar year.  This variable relates to education beyond the high school level, including college, university, or vocational, business, or trade school.  The financial aid could cover tuition, fees, books, or living expenses while attending school.  
+
+Educational assistance includes Pell Grants or other aid from government sources, non-governmental scholarships and grants, and financial assistance from employers or friends (excluding household members).  Educational benefits from the Veteran's Administration are included in INCVET rather than INCEDUC.
+
+Amounts are expressed as they were reported to the interviewer; users must adjust for inflation using Consumer Price Index [URL omitted from DDI.] adjustment factors.]]></txt>
+      <codInstr><![CDATA[
+99999 = N.I.U. (Not in Universe).
+99997 = Top Code (1988-1998, 2011-onward).  For other years, see the Topcodes Tables link below.
+
+See User Note [URL omitted from DDI.] for an explanation of these codes, and the Topcodes Tables [URL omitted from DDI.] page for documentation on income component topcodes over time.]]></codInstr>
+      <concept vocab="IPUMS">Income Variables -- PERSON</concept>
+      <varFormat schema="other" type="numeric"/>
+    </var>
+    <var ID="INCCHILD" files="ExtractData" name="INCCHILD" intrvl="contin" dcml="0">
+      <location StartPos="164" width="5" EndPos="168"/>
+      <labl>Income from child support</labl>
+      <txt><![CDATA[INCCHILD indicates how much pre-tax income (if any) the respondent received from child support payments during the previous calendar year. 
+
+Amounts are expressed as they were reported to the interviewer; users must adjust for inflation using Consumer Price Index [URL omitted from DDI.] adjustment factors.]]></txt>
+      <codInstr><![CDATA[
+99999 = N.I.U. (Not in Universe).
+99997 = Top Code (1988-1998, 2011-onward).  For other years, see the Topcodes Tables link below.
+
+See User Note [URL omitted from DDI.] for an explanation of these codes, and the Topcodes Tables [URL omitted from DDI.] page for documentation on income component topcodes over time.]]></codInstr>
+      <concept vocab="IPUMS">Income Variables -- PERSON</concept>
+      <varFormat schema="other" type="numeric"/>
+    </var>
+    <var ID="INCALIM" files="ExtractData" name="INCALIM" intrvl="contin" dcml="0">
+      <location StartPos="169" width="5" EndPos="173"/>
+      <labl>Income from alimony</labl>
+      <txt><![CDATA[INCALIM indicates how much pre-tax income (if any) the respondent received from alimony payments during the previous calendar year. 
+
+Amounts are expressed as they were reported to the interviewer; users must adjust for inflation using Consumer Price Index [URL omitted from DDI.] adjustment factors.]]></txt>
+      <codInstr><![CDATA[
+99999 = N.I.U. (Not in Universe)/N.A. (Not Available for 3/8 ASEC 2014 sample)
+99997 = Top Code (1988-1998, 2011-conward).  For other years, see the Topcodes Tables link below.
+
+See User Note [URL omitted from DDI.] for an explanation of these codes, and the Topcodes Tables [URL omitted from DDI.] page for documentation on income component topcodes over time.]]></codInstr>
+      <concept vocab="IPUMS">Income Variables -- PERSON</concept>
+      <varFormat schema="other" type="numeric"/>
+    </var>
+    <var ID="INCASIST" files="ExtractData" name="INCASIST" intrvl="contin" dcml="0">
+      <location StartPos="174" width="5" EndPos="178"/>
+      <labl>Income from assistance</labl>
+      <txt><![CDATA[INCASIST indicates how much pre-tax income (if any) the respondent received during the previous calendar year from regular financial assistance from friends or relatives not living in the same household. 
+
+Amounts are expressed as they were reported to the interviewer; users must adjust for inflation using Consumer Price Index [URL omitted from DDI.] adjustment factors.]]></txt>
+      <codInstr><![CDATA[
+99999 = N.I.U. (Not in Universe).
+99997 = Top Code (1988-1998, 2011-onward).  For other years, see the Topcodes Tables link below.
+
+See User Note [URL omitted from DDI.] for an explanation of these codes, and the Topcodes Tables [URL omitted from DDI.] page for documentation on income component topcodes over time.]]></codInstr>
+      <concept vocab="IPUMS">Income Variables -- PERSON</concept>
+      <varFormat schema="other" type="numeric"/>
+    </var>
+    <var ID="INCOTHER" files="ExtractData" name="INCOTHER" intrvl="contin" dcml="0">
+      <location StartPos="179" width="5" EndPos="183"/>
+      <labl>Income from other Source not specified</labl>
+      <txt><![CDATA[INCOTHER is a residual category for pre-tax income for the previous calendar year that was not reported in other, more specific, income variables.  Small amounts of income from hobbies, severance pay, and foster child care payments are included in INCOTHER, as is any income that respondents failed to report earlier in the interview.  
+
+INCOTHER covers income not captured in the variables INCWAGE, INCBUS, INCFARM, INCSS, INCWELFR, INCRETIR, INCSSI, INCINT, INCUNEMP, INCWKCOM, INCVET, INCSURV, INCDISAB, INCRENT, INCDIVID, INCEDUC, INCCHILD, INCALIM, and INCASIST.
+
+Amounts are expressed as they were reported to the interviewer; users must adjust for inflation using Consumer Price Index [URL omitted from DDI.] adjustment factors.]]></txt>
+      <codInstr><![CDATA[
+99999 = N.I.U. (Not in Universe).
+99997 = Top Code (1988-1998, 2011-onward).  For other years, see the Topcodes Tables link below.
+
+See User Note [URL omitted from DDI.] for an explanation of these codes, and the Topcodes Tables [URL omitted from DDI.] page for documentation on income component topcodes over time.]]></codInstr>
+      <concept vocab="IPUMS">Income Variables -- PERSON</concept>
+      <varFormat schema="other" type="numeric"/>
+    </var>
+    <var ID="GOTVDISA" files="ExtractData" name="GOTVDISA" intrvl="discrete" dcml="0">
+      <location StartPos="184" width="1" EndPos="184"/>
+      <labl>Received veterans' disability compensation</labl>
+      <txt><![CDATA[GOTVDISA indicates whether respondents who received veterans' payments during the previous calendar year received VA Disability Compensation.  VA Disability Compensation is a monetary benefit paid to a veteran who was disabled by injury or disease incurred or aggravated in the line of duty during active military service.]]></txt>
+      <catgry>
+        <catValu>0</catValu>
+        <labl>NIU</labl>
+      </catgry>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>No</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Yes</labl>
+      </catgry>
+      <concept vocab="IPUMS">Income Variables -- PERSON</concept>
+      <varFormat schema="other" type="numeric"/>
+    </var>
+    <var ID="GOTVEDUC" files="ExtractData" name="GOTVEDUC" intrvl="discrete" dcml="0">
+      <location StartPos="185" width="1" EndPos="185"/>
+      <labl>Received veterans' education assistance</labl>
+      <txt><![CDATA[GOTVEDUC indicates whether respondents who received veterans' payments during the previous calendar year received veterans' educational assistance.  The specific educational assistance programs administered by the Veterans Administration have varied over time; programs include the Veterans' Educational Assistance Program, the Montgomery G.I. Bill, and the Survivors' and Dependents' Educational Assistance Program.]]></txt>
+      <catgry>
+        <catValu>0</catValu>
+        <labl>NIU</labl>
+      </catgry>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>No</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Yes</labl>
+      </catgry>
+      <concept vocab="IPUMS">Income Variables -- PERSON</concept>
+      <varFormat schema="other" type="numeric"/>
+    </var>
+    <var ID="GOTVOTHE" files="ExtractData" name="GOTVOTHE" intrvl="discrete" dcml="0">
+      <location StartPos="186" width="1" EndPos="186"/>
+      <labl>Received other veterans' payments</labl>
+      <txt><![CDATA[GOTVOTHE indicates whether respondents who received veterans' payments during the previous calendar year received some form of compensation from the Veterans Administration other than educational assistance, survivor benefits, disability compensation, or a VA pension.   Most income transfers from the VA fall within one of these four specific categories, not in a residual "other" category.]]></txt>
+      <catgry>
+        <catValu>0</catValu>
+        <labl>NIU</labl>
+      </catgry>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>No</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Yes</labl>
+      </catgry>
+      <concept vocab="IPUMS">Income Variables -- PERSON</concept>
+      <varFormat schema="other" type="numeric"/>
+    </var>
+    <var ID="GOTVPENS" files="ExtractData" name="GOTVPENS" intrvl="discrete" dcml="0">
+      <location StartPos="187" width="1" EndPos="187"/>
+      <labl>Received veterans' pension</labl>
+      <txt><![CDATA[GOTVPENS indicates whether a respondent who received veterans' payments during the previous calendar year received a veteran's pension.   The Veterans Administration provides pensions to some veterans with low incomes whose active service occurred, at least in part, during a period of war.  Military retirement pensions paid to veterans after twenty years of active military service are not included in this category.]]></txt>
+      <catgry>
+        <catValu>0</catValu>
+        <labl>NIU</labl>
+      </catgry>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>No</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Yes</labl>
+      </catgry>
+      <concept vocab="IPUMS">Income Variables -- PERSON</concept>
+      <varFormat schema="other" type="numeric"/>
+    </var>
+    <var ID="GOTVSURV" files="ExtractData" name="GOTVSURV" intrvl="discrete" dcml="0">
+      <location StartPos="188" width="1" EndPos="188"/>
+      <labl>Received veterans' survivor benefits</labl>
+      <txt><![CDATA[GOTVSURV indicates whether respondents who received veterans' payments during the previous calendar year received veterans' survivor benefits.  Dependency and indemnity compensation and/or a death pension may be paid to the spouse of a deceased veteran (if the spouse has not remarried), to the children of a deceased veteran (if the children are unmarried and are either under age 18 or are between the ages of 18 and 23 and are attending school), or to the parents of a deceased veteran (if their income falls below a specific cut-off).  For survivors to be eligible the deceased veteran must have died from disease or injury incurred or aggravated while on active duty or during military training, or from a disability compensated by the Veterans Administration.]]></txt>
+      <catgry>
+        <catValu>0</catValu>
+        <labl>NIU</labl>
+      </catgry>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>No</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Yes</labl>
+      </catgry>
+      <concept vocab="IPUMS">Income Variables -- PERSON</concept>
+      <varFormat schema="other" type="numeric"/>
+    </var>
+    <var ID="INCDISA1" files="ExtractData" name="INCDISA1" intrvl="contin" dcml="0">
+      <location StartPos="189" width="5" EndPos="193"/>
+      <labl>Disability income from first source</labl>
+      <txt><![CDATA[INCDISA1 reports the amount of disability income (payments from sources other than Social Security and VA payments and due to health problems) received by respondents during the previous calendar year, from the source identified in SRCDISA1.  For example, if the source of payments identified in SRCDISA1 were "company or union disability" (code 02), then INCDISA1 would report the amount of income received from company or union disability payments during the previous calendar year.  For persons who reported receiving disability payments from a second source in SRCDISA2, INCDISA2 similarly reports the amount of disability income received from that second source during the previous calendar year.]]></txt>
+      <codInstr><![CDATA[
+99999 = N.I.U. (Not in Universe).
+
+		
+99997 = Top Code (1988-1998, 2011-onward).  For other years, see the Topcodes Tables link below.
+
+See User Note [URL omitted from DDI.] for an explanation of these codes, and the Topcodes Tables [URL omitted from DDI.] page for documentation on income component topcodes over time.]]></codInstr>
+      <concept vocab="IPUMS">Income Variables -- PERSON</concept>
+      <varFormat schema="other" type="numeric"/>
+    </var>
+    <var ID="INCDISA2" files="ExtractData" name="INCDISA2" intrvl="contin" dcml="0">
+      <location StartPos="194" width="5" EndPos="198"/>
+      <labl>Disability income from second source</labl>
+      <txt><![CDATA[INCDISA2 reports the amount of disability income (payments from sources other than Social Security and VA payments and due to health problems) received by respondents during the previous calendar year, from the source identified in SRCDISA2.  For example, if the source of payments identified in SRCDISA2 were "company or union disability" (code 02), then INCDISA2 would report the amount of income received from company or union disability payments during the previous calendar year.  
+
+The first source of disability income reported by an individual is identified in SRCDISA1, and the amount of income from that first source is reported in INCDISA1.  If individuals reported only one source of disability income (and received a code of 00 in SRCDISA2) then the INCDISA2 variable has a value of 99999 (indicating no disability income from a second source).]]></txt>
+      <codInstr><![CDATA[
+99999 = N.I.U. (Not in Universe).
+99997 = Top Code (1988-1998, 2011-onward).  For other years, see the Topcodes Tables link below.
+
+
+See User Note [URL omitted from DDI.] for an explanation of these codes, and the Topcodes Tables [URL omitted from DDI.] page for documentation on income component topcodes over time.]]></codInstr>
+      <concept vocab="IPUMS">Income Variables -- PERSON</concept>
+      <varFormat schema="other" type="numeric"/>
+    </var>
+    <var ID="INCLONGJ" files="ExtractData" name="INCLONGJ" intrvl="contin" dcml="0">
+      <location StartPos="199" width="7" EndPos="205"/>
+      <labl>Earnings from longest job</labl>
+      <txt><![CDATA[INCLONGJ reports the net amount (prior to deductions) that the respondent earned from the job held for the longest time during the preceding calendar year.  Whether such income derived from wages or salary or from self-employment in a business or farm is specified in SRCEARN.
+
+Most income variables included in IPUMS-CPS report the total amount earned from a specific source (e.g., wages and salary) during the preceding calendar year.  INCLONGJ, by contrast, does not necessarily include income earned during the entire calendar year.  Imagine that an individual worked at one job for eight months, earning $10,000 in wages, and then worked for four months at two different jobs, earning an additional $5000 in wages.  Wages from the longest-held job (in this case, $10,000) would be reported in INCLONGJ.  Wage and salary income from the two jobs other than the longest-held job (in this case, $5,000) would be reported in OINCWAGE. Total earnings from wages for this person (in this case, $15,000, accrued in three different jobs) would be reported in INCWAGE.  If, however, a wage-earner worked at a single job during the preceding calendar year, the amounts reported in INCLONGJ and INCWAGE would be the same. 
+
+Amounts are expressed as they were reported to the interviewer; users must adjust for inflation using Consumer Price Index [URL omitted from DDI.] adjustment factors.]]></txt>
+      <codInstr><![CDATA[
+999999 = N.I.U. (Not in Universe).
+
+		
+99997 = Topcode (1988-1995).   For other years, see the Topcodes Tables link below.
+
+See User Note [URL omitted from DDI.] for an explanation of these codes, and the Topcodes Tables [URL omitted from DDI.] page for documentation on income component topcodes over time.]]></codInstr>
+      <concept vocab="IPUMS">Income Variables -- PERSON</concept>
+      <varFormat schema="other" type="numeric"/>
+    </var>
+    <var ID="INCRETI1" files="ExtractData" name="INCRETI1" intrvl="contin" dcml="0">
+      <location StartPos="206" width="5" EndPos="210"/>
+      <labl>Retirement income from first source</labl>
+      <txt><![CDATA[INCRETI1 reports the amount of retirement income received by respondents during the previous calendar year, from the source identified in SRCRETI1.  For example, if the source of payments identified in SRCRETI1 were "company or union pension" (code 1), then INCRETI1 would report the amount of income received from the company or union pension(s) during the previous calendar year.  For those persons who reported receiving retirement income from a second source in SRCRETI2, INCRETI2 similarly reports the amount of retirement income received from that second source during the previous calendar year.]]></txt>
+      <codInstr><![CDATA[
+99999 = N.I.U. (Not in Universe).
+
+		
+99997 = Top Code (1988-1998, 2011-onward).  For other years, see the Topcodes Tables link below.
+
+See User Note [URL omitted from DDI.] for an explanation of these codes, and the Topcodes Tables [URL omitted from DDI.] page for documentation on income component topcodes over time.]]></codInstr>
+      <concept vocab="IPUMS">Income Variables -- PERSON</concept>
+      <varFormat schema="other" type="numeric"/>
+    </var>
+    <var ID="INCRETI2" files="ExtractData" name="INCRETI2" intrvl="contin" dcml="0">
+      <location StartPos="211" width="5" EndPos="215"/>
+      <labl>Retirement income from second source</labl>
+      <txt><![CDATA[INCRETI2 reports the amount of retirement income received by respondents during the previous calendar year, from the source identified in SRCRETI2.  For example, if the source of payments identified in SRCRETI2 were "company or union pension" (code 1), then INCRETI2 would report the amount of income received from the company or union pension(s) during the previous calendar year.  
+
+The first source of retirement income reported by an individual is identified in SRCRETI1, and the amount of payments from that first source is reported in INCRETI1.  If individuals reported only one source of retirement income (and received a code of 0 in SRCRETI2) then the INCRETI2 variable has a value of 99999 (indicating no retirement income from a second source).]]></txt>
+      <codInstr><![CDATA[
+99999 = N.I.U. (Not in Universe).
+
+		
+99997 = Top Code (1988-1998, 2011-onward).  For other years, see the Topcodes Tables link below.
+
+See User Note [URL omitted from DDI.] for an explanation of these codes, and the Topcodes Tables [URL omitted from DDI.] page for documentation on income component topcodes over time.]]></codInstr>
+      <concept vocab="IPUMS">Income Variables -- PERSON</concept>
+      <varFormat schema="other" type="numeric"/>
+    </var>
+    <var ID="INCSURV1" files="ExtractData" name="INCSURV1" intrvl="contin" dcml="0">
+      <location StartPos="216" width="5" EndPos="220"/>
+      <labl>Survivor benefits income from first source</labl>
+      <txt><![CDATA[INCSURV1 reports the amount of income from survivor benefits received by a respondent during the previous calendar year, from the source identified in SRCSURV1.  For example, if the source of payments identified in SRCSURV1 were "company or union pension" (code 01), then INCSURV1 would report the amount of income received from survivor benefits from a company or union pension during the previous calendar year.  For persons who reported receiving survivor benefits from a second source in SRCSURV2, INCSURV2 similarly reports the amount of income from survivor benefits received from that second source during the previous calendar year.]]></txt>
+      <codInstr><![CDATA[
+99999 = N.I.U. (Not in Universe).
+
+		
+99997 = Top Code (1988-1998, 2011-onward).  For other years, see the Topcodes Tables link below.
+
+See User Note [URL omitted from DDI.] for an explanation of these codes, and the Topcodes Tables [URL omitted from DDI.] page for documentation on income component topcodes over time.]]></codInstr>
+      <concept vocab="IPUMS">Income Variables -- PERSON</concept>
+      <varFormat schema="other" type="numeric"/>
+    </var>
+    <var ID="INCSURV2" files="ExtractData" name="INCSURV2" intrvl="contin" dcml="0">
+      <location StartPos="221" width="5" EndPos="225"/>
+      <labl>Survivor benefits income from second source</labl>
+      <txt><![CDATA[INCSURV2 reports the amount of income from survivor benefits received by a respondent during the previous calendar year, from the source identified in SRCSURV2.  For example, if the source of payments identified in SRCSURV2 were "company or union pension" (code 01), then INCSURV2 would report the amount of income received from survivor benefits from a company or union pension during the previous calendar year.  
+
+The first source of survivor benefits reported by an individual is identified in SRCSURV1, and the amount of income from that first source is reported in INCSURV1.  If individuals reported only one source of income from survivor benefits (and received a code of 00 in SRCSURV2), then the INCSURV2 has a value of 99999 (indicating no income from a second source of survivor benefits).]]></txt>
+      <codInstr><![CDATA[
+99999 = N.I.U. (Not in Universe).
+
+		
+99997 = Top Code (1988-1998, 2011-onward).  For other years, see the Topcodes Tables link below.
+
+See User Note [URL omitted from DDI.] for an explanation of these codes, and the Topcodes Tables [URL omitted from DDI.] page for documentation on income component topcodes over time.]]></codInstr>
+      <concept vocab="IPUMS">Income Variables -- PERSON</concept>
+      <varFormat schema="other" type="numeric"/>
+    </var>
+    <var ID="MTHWELFR" files="ExtractData" name="MTHWELFR" intrvl="contin" dcml="0">
+      <location StartPos="226" width="5" EndPos="230"/>
+      <labl>Number of months received welfare income</labl>
+      <txt><![CDATA[MTHWELFR reports the number of months during the previous calendar year that respondents received public assistance or welfare payments from the state or local welfare office.]]></txt>
+      <codInstr><![CDATA[
+MTHWELFR is a 2-digit numeric code.]]></codInstr>
+      <concept vocab="IPUMS">Income Variables -- PERSON</concept>
+      <varFormat schema="other" type="numeric"/>
+    </var>
+    <var ID="OINCBUS" files="ExtractData" name="OINCBUS" intrvl="contin" dcml="0">
+      <location StartPos="231" width="6" EndPos="236"/>
+      <labl>Earnings from other work included business self-employment earnings</labl>
+      <txt><![CDATA[OINCBUS reports net earnings from self-employment in a non-farm business, if this self-employment did not constitute the respondent's longest-held job during the previous calendar year.  The amount earned (in wages, salary, or earnings from self-employment in a business or farm) from the longest-held job during the preceding calendar year is reported in INCLONGJ.     
+
+Imagine that a self-employed individual worked in one non-farm own business for eight months, netting $10,000 in earnings, and worked in two other non-farm own businesses for the remaining 4 months, netting an additional $12,000 in earnings.  The $12,000 in "other" net self-employment earnings (from work outside the person's primary, or longest-held, job) would be reported in OINCBUS; the $10,000 in net earnings from the individual's longest-held job would be reported in INCLONGJ; and the total amount of net self-employed non-farm business earnings from the previous calendar year ($22,000) would be reported in INCBUS.  
+
+Imagine, instead, that as reported in SRCEARN, an individual worked as an employee earning wages for the primary job, but earned additional income working part of the year in their own non-farm businesses.  In such a case, wage income from the primary job would be reported in INCLONGJ; all self-employed non-farm net business earnings would be reported in OINCBUS; and the value of OINCBUS and INCBUS would be the same.   
+
+Amounts are expressed as they were reported to the interviewer; users must adjust for inflation using Consumer Price Index [URL omitted from DDI.] adjustment factors.]]></txt>
+      <codInstr><![CDATA[
+999999 = N.I.U. (Not in Universe).
+99997 = Topcode (1988-1995). For other years, see the Topcodes Tables link below.
+-9997  = Bottom Code (Loss of $9997 or more).
+
+See User Note [URL omitted from DDI.] for an explanation of these codes, and the Topcodes Tables [URL omitted from DDI.] page for documentation on income component topcodes over time.]]></codInstr>
+      <concept vocab="IPUMS">Income Variables -- PERSON</concept>
+      <varFormat schema="other" type="numeric"/>
+    </var>
+    <var ID="OINCFARM" files="ExtractData" name="OINCFARM" intrvl="contin" dcml="0">
+      <location StartPos="237" width="6" EndPos="242"/>
+      <labl>Earnings from other work included farm self-employment earnings</labl>
+      <txt><![CDATA[OINCFARM reports net earnings as a tenant farmer, sharecropper, or operator of one's own farm during the previous calendar year, if such work did not constitute the longest-held job during that period.  The amount earned (in wages, salary, or earnings from self-employment in a business or farm) from the longest-held job during the preceding calendar year is reported in INCLONGJ.     
+
+Imagine that an individual considered raising crops on her own land to be her primary job, and considered money earned by harvesting crops on another farmer's land for a few days, using her own equipment, to be a secondary "own farm" job.  In such a case, net earnings from the sale of  her own crops would be reported as income in INCLONGJ; earnings from harvesting crops for another farmer would be reported as "other" self-employed own farm income in OINCFARM; and the sum of earnings from crop sales and farm equipment rental would constitute INCFARM.  If, instead, she grouped together all net earnings from crop sales and income generated from the use of her equipment into a single "own farm" business, all of this net farm income would be reported in both INCLONGJ and INCFARM, and the value of OINCFARM would be zero.  
+
+Imagine, instead, that as reported in SRCEARN, an individual worked as an employee earning wages for the primary job, but earned additional income working part of the year on their own farm.  In such a case, wage income from the primary job would be reported in INCLONGJ; all self-employed farm net business earnings would be reported in OINCFARM; and the value of OINCFARM and INCFARM would be the same.   
+
+Amounts are expressed as they were reported to the interviewer; users must adjust for inflation using Consumer Price Index [URL omitted from DDI.] adjustment factors.]]></txt>
+      <codInstr><![CDATA[
+999999 = N.I.U. (Not in Universe).
+99997 = Topcode (1988-1995). For other years, see the Topcodes Tables link below.
+ -9997   = Bottom Code (Loss of $9997 or more).
+
+See User Note [URL omitted from DDI.] for an explanation of these codes, and the Topcodes Tables [URL omitted from DDI.] page for documentation on income component topcodes over time.]]></codInstr>
+      <concept vocab="IPUMS">Income Variables -- PERSON</concept>
+      <varFormat schema="other" type="numeric"/>
+    </var>
+    <var ID="OINCWAGE" files="ExtractData" name="OINCWAGE" intrvl="contin" dcml="0">
+      <location StartPos="243" width="7" EndPos="249"/>
+      <labl>Earnings from other work included wage and salary earnings</labl>
+      <txt><![CDATA[OINCWAGE reports the net amount (prior to deductions) that the respondent earned in wages and salary, other than the amount earned in the primary (longest-held) job, during the preceding calendar year.  The amount earned (in wages, salary, or earnings from self-employment in a business or farm) from the longest held job during the preceding calendar year is reported in INCLONGJ.
+
+Imagine that an individual worked at one job for 8 months, earning $10,000 in wages, and worked at two other jobs for the remaining 4 months, earning $12,000 in wages.  The $12,000 in "other" wage and salary earnings (wages and salary from jobs other than the person's primary, or longest-held, job) would be reported in OINCWAGE; the $10,000 in wages from the individual's longest-held job would be reported in INCLONGJ; and the total amount of wage and salary income from the previous calendar year ($22,000) would be reported in INCWAGE.
+
+Imagine, instead, that as reported in SRCEARN, an individual was self-employed in a business or farm for their primary job, and also worked one or more additional jobs for wages. In such a case, self-employment income from the primary job would be reported in INCLONGJ; all wage and salary earnings would be reported in OINCWAGE, and the value of OINCWAGE and INCWAGE would be the same.  
+
+Amounts are expressed as they were reported to the interviewer; users must adjust for inflation using Consumer Price Index [URL omitted from DDI.] adjustment factors.]]></txt>
+      <codInstr><![CDATA[
+9999999 = N.I.U. (Not in Universe).
+
+		
+99997 = Topcode (1988-1995). For other years, see the Topcodes Tables link below.
+
+See User Note [URL omitted from DDI.] for an explanation of these codes, and the Topcodes Tables [URL omitted from DDI.] page for documentation on income component topcodes over time.]]></codInstr>
+      <concept vocab="IPUMS">Income Variables -- PERSON</concept>
+      <varFormat schema="other" type="numeric"/>
+    </var>
+    <var ID="SRCDISA1" files="ExtractData" name="SRCDISA1" intrvl="discrete" dcml="0">
+      <location StartPos="250" width="2" EndPos="251"/>
+      <labl>First source of disability income</labl>
+      <txt><![CDATA[SRCDISA1 reports the first source of disability payments identified by respondents who acknowledged receiving income (other than Social Security or VA benefits) during the previous calendar year as a result of a health problem, disability, or handicap.  If the individual received disability income from more than one source, the second source of disability payments is reported in SRCDISA2.]]></txt>
+      <catgry>
+        <catValu>00</catValu>
+        <labl>NIU</labl>
+      </catgry>
+      <catgry>
+        <catValu>01</catValu>
+        <labl>Workers compensation</labl>
+      </catgry>
+      <catgry>
+        <catValu>02</catValu>
+        <labl>Company or union disability</labl>
+      </catgry>
+      <catgry>
+        <catValu>03</catValu>
+        <labl>Federal govt disability</labl>
+      </catgry>
+      <catgry>
+        <catValu>04</catValu>
+        <labl>US military retirement disability</labl>
+      </catgry>
+      <catgry>
+        <catValu>05</catValu>
+        <labl>State or local govt employee disability</labl>
+      </catgry>
+      <catgry>
+        <catValu>06</catValu>
+        <labl>US railroad retirement disability</labl>
+      </catgry>
+      <catgry>
+        <catValu>07</catValu>
+        <labl>Accident or disability insurance</labl>
+      </catgry>
+      <catgry>
+        <catValu>08</catValu>
+        <labl>Black lung miners disability</labl>
+      </catgry>
+      <catgry>
+        <catValu>09</catValu>
+        <labl>State temporary sickness</labl>
+      </catgry>
+      <catgry>
+        <catValu>10</catValu>
+        <labl>Other or don't know</labl>
+      </catgry>
+      <concept vocab="IPUMS">Income Variables -- PERSON</concept>
+      <varFormat schema="other" type="numeric"/>
+    </var>
+    <var ID="SRCDISA2" files="ExtractData" name="SRCDISA2" intrvl="discrete" dcml="0">
+      <location StartPos="252" width="2" EndPos="253"/>
+      <labl>Second source of disability income</labl>
+      <txt><![CDATA[SRCDISA2 reports the second source of disability payments identified by respondents who acknowledged receiving income (other than Social Security or VA benefits) during the previous calendar year as a result of health problem, disability, or handicap.  The first source of disability payments is reported in SRCDISA1.  Individuals who received disability payments from only one source are coded as Not in Universe (code 00) in SRCDISA2.]]></txt>
+      <catgry>
+        <catValu>00</catValu>
+        <labl>NIU</labl>
+      </catgry>
+      <catgry>
+        <catValu>01</catValu>
+        <labl>Workers compensation</labl>
+      </catgry>
+      <catgry>
+        <catValu>02</catValu>
+        <labl>Company or union disability</labl>
+      </catgry>
+      <catgry>
+        <catValu>03</catValu>
+        <labl>Federal govt disability</labl>
+      </catgry>
+      <catgry>
+        <catValu>04</catValu>
+        <labl>US military retirement disability</labl>
+      </catgry>
+      <catgry>
+        <catValu>05</catValu>
+        <labl>State or local govt employee disability</labl>
+      </catgry>
+      <catgry>
+        <catValu>06</catValu>
+        <labl>US railroad retirement disability</labl>
+      </catgry>
+      <catgry>
+        <catValu>07</catValu>
+        <labl>Accident or disability insurance</labl>
+      </catgry>
+      <catgry>
+        <catValu>08</catValu>
+        <labl>Black lung miners disability</labl>
+      </catgry>
+      <catgry>
+        <catValu>09</catValu>
+        <labl>State temporary sickness</labl>
+      </catgry>
+      <catgry>
+        <catValu>10</catValu>
+        <labl>Other or don't know</labl>
+      </catgry>
+      <concept vocab="IPUMS">Income Variables -- PERSON</concept>
+      <varFormat schema="other" type="numeric"/>
+    </var>
+    <var ID="SRCEARN" files="ExtractData" name="SRCEARN" intrvl="discrete" dcml="0">
+      <location StartPos="254" width="1" EndPos="254"/>
+      <labl>Source of earnings from longest job</labl>
+      <txt><![CDATA[SRCEARN reports the source of income (from wages and salary, self-employment, farm self-employment, or working without pay) for the job that the respondent held for the longest time during the preceding calendar year.]]></txt>
+      <catgry>
+        <catValu>0</catValu>
+        <labl>NIU</labl>
+      </catgry>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>Wage and salary</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Self employment</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>Farm self employment</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>Without pay</labl>
+      </catgry>
+      <concept vocab="IPUMS">Income Variables -- PERSON</concept>
+      <varFormat schema="other" type="numeric"/>
+    </var>
+    <var ID="SRCEDUC" files="ExtractData" name="SRCEDUC" intrvl="discrete" dcml="0">
+      <location StartPos="255" width="1" EndPos="255"/>
+      <labl>Source of educational assistance</labl>
+      <txt><![CDATA[For persons who attended school beyond high school and who received educational assistance during the previous calendar year, SRCEDUC reports the source(s) of educational assistance: 1) government assistance (such as a Pell Grant), except for VA educational benefits; 2) scholarships and grants; 3) other assistance (from employers, friends, or family not living in the same household); or 4) some combination of assistance from these sources.  Various types of post-high school training, including attending a college, university, or business, vocational, or trade school, counted in this context.  The educational assistance could cover a variety of costs, including tuition, fees, books, and living expenses while attending school.]]></txt>
+      <catgry>
+        <catValu>0</catValu>
+        <labl>NIU</labl>
+      </catgry>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>Government assistance</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Scholarships, grants etc from school</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>Other assistance</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>Govt assistance and scholarships, grants etc from school</labl>
+      </catgry>
+      <catgry>
+        <catValu>5</catValu>
+        <labl>Govt assistance and other assistance</labl>
+      </catgry>
+      <catgry>
+        <catValu>6</catValu>
+        <labl>Scholarships, grants etc from school and other assistance</labl>
+      </catgry>
+      <catgry>
+        <catValu>7</catValu>
+        <labl>Govt assistance, scholarships, grants etc from school, and other assistance</labl>
+      </catgry>
+      <concept vocab="IPUMS">Income Variables -- PERSON</concept>
+      <varFormat schema="other" type="numeric"/>
+    </var>
+    <var ID="SRCRETI1" files="ExtractData" name="SRCRETI1" intrvl="discrete" dcml="0">
+      <location StartPos="256" width="1" EndPos="256"/>
+      <labl>First source of retirement income</labl>
+      <txt><![CDATA[SRCRETI1 reports the first source of retirement income identified by respondents who answered yes to the question, "Other than Social Security or VA benefits, did you receive any pension or retirement income from a previous employer or union, or any other type of retirement income [during the previous calendar year]?"  The second source of retirement income is reported in SRCRETI2.]]></txt>
+      <catgry>
+        <catValu>0</catValu>
+        <labl>NIU</labl>
+      </catgry>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>Company or Union  pension</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Federal Government retirement Pension</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>US Military retirement pension</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>State or local Govt retirement pension</labl>
+      </catgry>
+      <catgry>
+        <catValu>5</catValu>
+        <labl>US Railroad retirement pension</labl>
+      </catgry>
+      <catgry>
+        <catValu>6</catValu>
+        <labl>Regular payments from annuities or paid-up insurance policies</labl>
+      </catgry>
+      <catgry>
+        <catValu>7</catValu>
+        <labl>Regular payments from IRA, KEOGH, or 401K accounts</labl>
+      </catgry>
+      <catgry>
+        <catValu>8</catValu>
+        <labl>Other or don't know</labl>
+      </catgry>
+      <concept vocab="IPUMS">Income Variables -- PERSON</concept>
+      <varFormat schema="other" type="numeric"/>
+    </var>
+    <var ID="SRCRETI2" files="ExtractData" name="SRCRETI2" intrvl="discrete" dcml="0">
+      <location StartPos="257" width="1" EndPos="257"/>
+      <labl>Second source of retirement income</labl>
+      <txt><![CDATA[SRCRETI2 reports the second source of retirement income identified by respondents who answered yes to the question, "Other than Social Security or VA benefits, did you receive any pension or retirement income from a previous employer or union, or any other type of retirement income [during the previous calendar year]?"  The first source of retirement income is reported in SRCRETI1.  Individuals who received retirement income from only one source are coded as Not in Universe (code 0) in SRCRETI2.]]></txt>
+      <catgry>
+        <catValu>0</catValu>
+        <labl>NIU</labl>
+      </catgry>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>Company or Union  pension</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Federal Government retirement Pension</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>US Military retirement pension</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>State or local Govt retirement pension</labl>
+      </catgry>
+      <catgry>
+        <catValu>5</catValu>
+        <labl>US Railroad retirement pension</labl>
+      </catgry>
+      <catgry>
+        <catValu>6</catValu>
+        <labl>Regular payments from annuities or paid-up insurance policies</labl>
+      </catgry>
+      <catgry>
+        <catValu>7</catValu>
+        <labl>Regular payments from IRA, KEOGH, or 401K accounts</labl>
+      </catgry>
+      <catgry>
+        <catValu>8</catValu>
+        <labl>Other or do not know</labl>
+      </catgry>
+      <concept vocab="IPUMS">Income Variables -- PERSON</concept>
+      <varFormat schema="other" type="numeric"/>
+    </var>
+    <var ID="SRCSURV1" files="ExtractData" name="SRCSURV1" intrvl="discrete" dcml="0">
+      <location StartPos="258" width="2" EndPos="259"/>
+      <labl>First source of survivor benefits</labl>
+      <txt><![CDATA[SRCSURV1 reports the first source of survivor benefits identified by respondents who reported receiving income from survivor benefits (e.g., from widow's pensions, estates, trusts, annuities, or other survivor benefits except Social Security and VA benefits) during the previous calendar year.  If the individual received survivor benefits from more than one source, the second source of survivor benefits is reported in SRCSURV2.]]></txt>
+      <catgry>
+        <catValu>06</catValu>
+        <labl>Workers compensation pension</labl>
+      </catgry>
+      <catgry>
+        <catValu>05</catValu>
+        <labl>US railroad retirement survivor pension</labl>
+      </catgry>
+      <catgry>
+        <catValu>07</catValu>
+        <labl>Black lung survivor pension</labl>
+      </catgry>
+      <catgry>
+        <catValu>08</catValu>
+        <labl>Regular payments from estates or trusts</labl>
+      </catgry>
+      <catgry>
+        <catValu>10</catValu>
+        <labl>Other or do not know</labl>
+      </catgry>
+      <catgry>
+        <catValu>09</catValu>
+        <labl>Regular payments from annuities or paid-up life insurance</labl>
+      </catgry>
+      <catgry>
+        <catValu>04</catValu>
+        <labl>State or local govt survivor pension</labl>
+      </catgry>
+      <catgry>
+        <catValu>00</catValu>
+        <labl>NIU</labl>
+      </catgry>
+      <catgry>
+        <catValu>01</catValu>
+        <labl>Company or union survivor pension</labl>
+      </catgry>
+      <catgry>
+        <catValu>02</catValu>
+        <labl>Federal government pension</labl>
+      </catgry>
+      <catgry>
+        <catValu>03</catValu>
+        <labl>US military retirement survivor pension</labl>
+      </catgry>
+      <concept vocab="IPUMS">Income Variables -- PERSON</concept>
+      <varFormat schema="other" type="numeric"/>
+    </var>
+    <var ID="SRCSURV2" files="ExtractData" name="SRCSURV2" intrvl="discrete" dcml="0">
+      <location StartPos="260" width="2" EndPos="261"/>
+      <labl>Second source of survivor benefits</labl>
+      <txt><![CDATA[SRCSURV2 reports the second source of survivor benefits identified by respondents who answered reported receiving income from survivor benefits (e.g., from widow's pensions, estates, trusts, annuities, or other survivor benefits except Social Security and VA benefits) during the previous calendar year.  The first source of survivor benefits is reported in SRCSURV1.  Individuals who received survivor benefits from only one source are coded as Not in Universe (code 00) in SRCSURV2.]]></txt>
+      <catgry>
+        <catValu>00</catValu>
+        <labl>NIU</labl>
+      </catgry>
+      <catgry>
+        <catValu>01</catValu>
+        <labl>Company or union survivor pension</labl>
+      </catgry>
+      <catgry>
+        <catValu>04</catValu>
+        <labl>State or local govt survivor pension</labl>
+      </catgry>
+      <catgry>
+        <catValu>02</catValu>
+        <labl>Federal government pension</labl>
+      </catgry>
+      <catgry>
+        <catValu>03</catValu>
+        <labl>US military retirement survivor pension</labl>
+      </catgry>
+      <catgry>
+        <catValu>05</catValu>
+        <labl>US railroad retirement survivor pension</labl>
+      </catgry>
+      <catgry>
+        <catValu>06</catValu>
+        <labl>Workers compensation pension</labl>
+      </catgry>
+      <catgry>
+        <catValu>08</catValu>
+        <labl>Regular payments from estates or trusts</labl>
+      </catgry>
+      <catgry>
+        <catValu>07</catValu>
+        <labl>Black lung survivor pension</labl>
+      </catgry>
+      <catgry>
+        <catValu>09</catValu>
+        <labl>Regular payments from annuities or paid-up life insurance</labl>
+      </catgry>
+      <catgry>
+        <catValu>10</catValu>
+        <labl>Other or do not know</labl>
+      </catgry>
+      <concept vocab="IPUMS">Income Variables -- PERSON</concept>
+      <varFormat schema="other" type="numeric"/>
+    </var>
+    <var ID="SRCUNEMP" files="ExtractData" name="SRCUNEMP" intrvl="discrete" dcml="0">
+      <location StartPos="262" width="1" EndPos="262"/>
+      <labl>Source of unemployment income</labl>
+      <txt><![CDATA[For persons who reported receiving federal or state unemployment compensation, SRCUNEMP reports on the receipt of additional unemployment income from supplemental unemployment benefits and/or union unemployment or strike benefits during the previous calendar year.  
+
+The term "supplemental unemployment benefits (SUB)" was not defined in the course of the ASEC CPS interview.  In other contexts, the words "supplemental unemployment benefits" may refer to either: 1) government income transfers extending additional weeks of coverage to persons whose regular unemployment compensation benefits have run out (e.g., under the Emergency Unemployment Compensation Act in place from 1991 to 1994); or 2) to employer-provided payments that are written into private employment contracts and augment the amount (and not necessarily the length) of concurrent government unemployment insurance benefits.  While the use of the acronym SUB suggests the question was intended to refer to the second meaning, some respondents may instead have responded in terms of their receipt of extended unemployment benefits from the state or federal government.   
+
+Respondents were first questioned about whether they had received any state or federal unemployment compensation during the previous year.  Only those who gave an affirmative answer to this question were further queried about whether they had received supplemental unemployment benefits, union unemployment benefits, or strike benefits.  Thus, all persons who reported this additional unemployment income (codes 1, 2, and 3 in SRCUNEMP) had also received state or federal unemployment compensation; however, only a fraction of those receiving state or federal unemployment compensation also received additional unemployment income from the sources covered by the SRCUNEMP variable.]]></txt>
+      <catgry>
+        <catValu>0</catValu>
+        <labl>No supplemental or strike benefits</labl>
+      </catgry>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>Supplemental unemployment benefits</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Union unemployment or strike benefits</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>Both</labl>
+      </catgry>
+      <catgry>
+        <catValu>9</catValu>
+        <labl>NIU</labl>
+      </catgry>
+      <concept vocab="IPUMS">Income Variables -- PERSON</concept>
+      <varFormat schema="other" type="numeric"/>
+    </var>
+    <var ID="SRCWELFR" files="ExtractData" name="SRCWELFR" intrvl="discrete" dcml="0">
+      <location StartPos="263" width="1" EndPos="263"/>
+      <labl>Source of welfare income</labl>
+      <txt><![CDATA[SRCWELFR reports the type of public assistance that respondents received from the state or local welfare office: 1) AFDC (Aid to Families with Dependent Children) or TANF (Temporary Assistance for Needy Families); 2) other public assistance; or 3) both AFDC/TANF and other public assistance.  Under the Welfare Reform Law of 1996, TANF replaced AFDC beginning July 1, 1997.  "Other types of public assistance" included such programs as General Assistance, Emergency Assistance, Cuban/Haitian Refugee Assistance, and Indian Assistance.  Food Stamps and SSI payments were not to be included.]]></txt>
+      <catgry>
+        <catValu>0</catValu>
+        <labl>NIU</labl>
+      </catgry>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>AFDC/TANF</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Other</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>Both AFDC/TANF and other</labl>
+      </catgry>
+      <concept vocab="IPUMS">Income Variables -- PERSON</concept>
+      <varFormat schema="other" type="numeric"/>
+    </var>
+    <var ID="SRCWKCOM" files="ExtractData" name="SRCWKCOM" intrvl="discrete" dcml="0">
+      <location StartPos="264" width="1" EndPos="264"/>
+      <labl>Source of workmen's compensation</labl>
+      <txt><![CDATA[SRCWKCOM reports the source of payments (other than sick pay and disability retirement) respondents received as a result of job-related injury or illness.  The sources identified in the survey were state worker's compensation, employer or employer's insurance, own insurance, and "other."  Though some persons probably received such compensation from more than one source, the variable included in the public use files identifies only one source (presumably that paying the largest amount) for each recipient of such payments.]]></txt>
+      <catgry>
+        <catValu>0</catValu>
+        <labl>NIU</labl>
+      </catgry>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>State Workers Compensation</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Employer or employers insurance</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>Own insurance</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>Other</labl>
+      </catgry>
+      <concept vocab="IPUMS">Income Variables -- PERSON</concept>
+      <varFormat schema="other" type="numeric"/>
+    </var>
+    <var ID="SSIKID" files="ExtractData" name="SSIKID" intrvl="discrete" dcml="0">
+      <location StartPos="265" width="1" EndPos="265"/>
+      <labl>Child under 18 received SSI income</labl>
+      <txt><![CDATA[SSIKID identifies "children" (in this case, persons under age 18) who received Supplemental Security Income (SSI) during the previous calendar year.  These recipients may have received SSI payments themselves directly as beneficiaries, or the payments may have been made to a parent or guardian on behalf of the child beneficiary. 
+
+While the ASEC CPS for these years generally defined "children" as persons under age 15, government programs such as SSI use the more common definition of "child" as persons under age 18 when defining eligibility for benefits.  Thus, some of the "children" identified in SSIKID as the beneficiaries of SSI would be defined as "adults" by other CPS variables, such as POPSTAT.  
+
+Persons under age 18 may qualify for SSI on the basis of being blind, severely disabled, or for other reasons, such as living with an SSI-eligible parent (SSI Caretaker Supplement benefits).  Children with disabilities qualify for SSI payments only if the income and resources of the child and co-resident family members fall within eligibility limits.  By contrast, only the income and resources of the individual are evaluated when deciding whether an adult (age 18 and over) meets the financial limits for SSI.]]></txt>
+      <catgry>
+        <catValu>0</catValu>
+        <labl>NIU</labl>
+      </catgry>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>No</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Yes</labl>
+      </catgry>
+      <concept vocab="IPUMS">Income Variables -- PERSON</concept>
+      <varFormat schema="other" type="numeric"/>
+    </var>
+    <var ID="SSKID" files="ExtractData" name="SSKID" intrvl="discrete" dcml="0">
+      <location StartPos="266" width="1" EndPos="266"/>
+      <labl>Child under 19 received SS income</labl>
+      <txt><![CDATA[SSKID identifies "children" (in this case, persons under age 19) who received Social Security Income during the previous calendar year. These recipients may have received Social Security payments themselves directly as beneficiaries, or the payments may have been made to a parent or guardian on behalf of the child beneficiary.
+
+While the ASEC CPS for these years generally defined "children" as persons under age 15, Social Security uses a broader definition of "child." Thus, for example, persons can qualify for benefits as "children" under Social Security's eligibility rules if they are unmarried and under age 18 or are unmarried, under age 19, and attending secondary school full-time. Thus, some of the "children" identified in SSKID as the beneficiaries of Social Security would be defined as "adults" by other CPS variables, such as POPSTAT.
+
+To qualify for Social Security child's benefits, a child must have a parent who is disabled or retired and entitled to Social Security benefits or a parent who died after having worked long enough in a job where he or she paid Social Security taxes.]]></txt>
+      <catgry>
+        <catValu>0</catValu>
+        <labl>NIU</labl>
+      </catgry>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>No</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Yes</labl>
+      </catgry>
+      <concept vocab="IPUMS">Income Variables -- PERSON</concept>
+      <varFormat schema="other" type="numeric"/>
+    </var>
+    <var ID="VETQA" files="ExtractData" name="VETQA" intrvl="discrete" dcml="0">
+      <location StartPos="267" width="1" EndPos="267"/>
+      <labl>Required to fill out annual income questionnaire for veterans' administration</labl>
+      <txt><![CDATA[VETQA indicates whether respondents who received veterans' payments during the previous calendar year said that they were required to fill out an annual income questionnaire for the Veterans Administration for VA compensation and pension purposes.
+
+Note:  Many veterans must also supply income information to determine their eligibility for enrollment into the VA health care system.  While many veterans qualify for cost-free health care services based on a compensable service-related condition or other qualifying factor (e.g., former prisoners of war, Purple Heart recipients), most veterans are required to complete an annual financial assessment or means test to determine if they qualify for cost-free services.  Veterans whose household income and net worth exceed the established threshold, as well as those who choose not to complete the financial assessment, must agree to pay required co-payments to become eligible for VA health care services.]]></txt>
+      <catgry>
+        <catValu>0</catValu>
+        <labl>NIU</labl>
+      </catgry>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>No</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Yes</labl>
+      </catgry>
+      <concept vocab="IPUMS">Income Variables -- PERSON</concept>
+      <varFormat schema="other" type="numeric"/>
+    </var>
+    <var ID="WHYSS1" files="ExtractData" name="WHYSS1" intrvl="discrete" dcml="0">
+      <location StartPos="268" width="1" EndPos="268"/>
+      <labl>First reason for receiving social security income</labl>
+      <txt><![CDATA[WHYSS1 reports the first reason respondents gave for receiving Social Security payments during the previous calendar year.  If persons received Social Security payments for more than one reason (e.g., on the basis of both widowhood and disability), they reported their second reason for receiving Social Security payments in the complementary variable WHYSS2.
+
+Respondents were to report Social Security payments that they themselves received as beneficiaries and Social Security payments that they received on behalf of a child beneficiary.  When interpreting the value labels, users should keep in mind the two meanings of "child" in this context.  Beginning in 1980, the ASEC CPS defined as a "child" anyone under age 15; persons age 15 and older were considered "adults" by the survey and were asked questions about their employment and own income.  (Prior to 1980, persons under age 14 were considered "children" in terms of the survey universe for work and income questions.)  By contrast, government programs such as Social Security generally use the more common definition of "child" to mean persons under age 18 when defining eligibility for benefits.  Thus, the value label "Surviving child" (corresponding to code 5) covers reporting of one's own benefits by persons who qualify for benefits as "children" under Social Security's eligibility rules (i.e., they are unmarried and under age 18 or are unmarried, under age 19, and attending secondary school full-time) but who are "adults" in terms of the CPS definition (i.e., they have passed their 15th birthday).    The value label "On behalf of surviving, dependent, or disabled child(ren)" (corresponding to code 7) covers reporting of benefits on behalf of persons who are under age 15.]]></txt>
+      <catgry>
+        <catValu>0</catValu>
+        <labl>NIU</labl>
+      </catgry>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>Retired</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Disabled (adult or child)</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>Widowed</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>Spouse</labl>
+      </catgry>
+      <catgry>
+        <catValu>5</catValu>
+        <labl>Surviving child</labl>
+      </catgry>
+      <catgry>
+        <catValu>6</catValu>
+        <labl>Dependent child</labl>
+      </catgry>
+      <catgry>
+        <catValu>7</catValu>
+        <labl>On behalf of surviving, dependent, or disabled child(ren)</labl>
+      </catgry>
+      <catgry>
+        <catValu>8</catValu>
+        <labl>Other (adult or child)</labl>
+      </catgry>
+      <concept vocab="IPUMS">Income Variables -- PERSON</concept>
+      <varFormat schema="other" type="numeric"/>
+    </var>
+    <var ID="WHYSS2" files="ExtractData" name="WHYSS2" intrvl="discrete" dcml="0">
+      <location StartPos="269" width="1" EndPos="269"/>
+      <labl>Second reason for receiving social security income</labl>
+      <txt><![CDATA[WHYSS2 reports the second reason respondents gave for receiving Social Security payments during the previous calendar year.  The first reason for receipt of such payments is reported in the complementary variable WHYSS1.  
+
+Interviewers asked, "What were the reasons you were getting Social Security?," checked off all applicable answers on the form, and elicited further answers with the probe, "Any other reason?"  Many recipients of Social Security income received such payments for only one reason (reported in WHYSS1), and these individuals are coded as Not in Universe (code 0) in WHYSS2.  For individuals who reported receiving Social Security payments for more than one reason (e.g., on the basis of both disability and widowhood), the second reason given is recorded in WHYSS2.
+
+Respondents were to report Social Security payments that they themselves received as beneficiaries and Social Security payments that they received on behalf of a child beneficiary.  When interpreting the value labels, users should keep in mind the two meanings of "child" in this context.  Beginning in 1980, the ASEC CPS defined as a "child" anyone under age 15; persons age 15 and older were considered "adults" by the survey and were asked questions about their employment and own income.  (Prior to 1980, persons under age 14 were considered "children" in terms of the survey universe for work and income questions.)  By contrast, government programs such as Social Security generally use the more common definition of "child" to mean persons under age 18 when defining eligibility for benefits.  Thus, the value label "Surviving child" (corresponding to code 5) covers reporting of one's own benefits by persons who qualify for benefits as "children" under Social Security's eligibility rules (i.e., they are unmarried and under age 18 or are unmarried, under age 19, and attending secondary school full-time) but who are "adults" in terms of the CPS definition (i.e., they have passed their 15th birthday).    The value label "On behalf of surviving, dependent, or disabled child(ren)" (corresponding to code 7) covers reporting of benefits on behalf of persons who are under age 15.]]></txt>
+      <catgry>
+        <catValu>0</catValu>
+        <labl>NIU</labl>
+      </catgry>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>Retired</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Disabled (adult or child)</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>Widowed</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>Spouse</labl>
+      </catgry>
+      <catgry>
+        <catValu>5</catValu>
+        <labl>Surviving child</labl>
+      </catgry>
+      <catgry>
+        <catValu>6</catValu>
+        <labl>Dependent child</labl>
+      </catgry>
+      <catgry>
+        <catValu>7</catValu>
+        <labl>On behalf of surviving, dependent, or disabled child(ren)</labl>
+      </catgry>
+      <catgry>
+        <catValu>8</catValu>
+        <labl>Other (adult or child)</labl>
+      </catgry>
+      <concept vocab="IPUMS">Income Variables -- PERSON</concept>
+      <varFormat schema="other" type="numeric"/>
+    </var>
+    <var ID="WHYSSI1" files="ExtractData" name="WHYSSI1" intrvl="discrete" dcml="0">
+      <location StartPos="270" width="1" EndPos="270"/>
+      <labl>First reason for receiving supplementary security income</labl>
+      <txt><![CDATA[WHYSSI1 reports the first reason respondents gave for receiving Supplemental Security Income during the previous calendar year.  If persons received Supplemental Security Income for more than one reason (e.g., on the basis of both blindness and on behalf of a disabled child), they reported their second reason for receiving Supplemental Security Income in the complementary variable WHYSSI2.
+
+Respondents were to report SSI payments that they themselves received as beneficiaries and SSI payments that they received on behalf of a child beneficiary.  When interpreting the value labels, users should keep in mind the two meanings of "child" in this context.  Beginning in 1980, the ASEC CPS defined as a "child" anyone under age 15; persons age 15 and older were considered "adults" by the survey and were asked questions about their employment and own income.  (Prior to 1980, persons under age 14 were considered "children" in terms of the survey universe for work and income questions.)  By contrast, government programs such as SSI generally use the more common definition of "child" to mean persons under age 18 when defining eligibility for benefits.  Thus, the value label "Disabled (adult or child)" (corresponding to code 1) covers reporting of one's own benefits by disabled persons who are legally adults (age 18+) and by disabled persons who are legally children but who are "adults" in terms of the CPS definition (age 15-17).    The value label "On behalf of a disabled child" (corresponding to code 3) covers reporting of benefits on behalf of a disabled child under age 15.]]></txt>
+      <catgry>
+        <catValu>0</catValu>
+        <labl>NIU</labl>
+      </catgry>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>Disabled (adult or child)</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Blind (adult or child)</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>On behalf of a disabled child</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>On behalf of a blind child</labl>
+      </catgry>
+      <catgry>
+        <catValu>5</catValu>
+        <labl>Other (adult or child)</labl>
+      </catgry>
+      <concept vocab="IPUMS">Income Variables -- PERSON</concept>
+      <varFormat schema="other" type="numeric"/>
+    </var>
+    <var ID="WHYSSI2" files="ExtractData" name="WHYSSI2" intrvl="discrete" dcml="0">
+      <location StartPos="271" width="1" EndPos="271"/>
+      <labl>Second reason for receiving supplementary security income</labl>
+      <txt><![CDATA[WHYSSI2 reports the second reason respondents gave for receiving Supplemental Security Income during the previous calendar year.  The first reason for receipt of such payments is reported in the complementary variable WHYSSI1.  
+
+Interviewers asked, "What were the reasons you were getting Supplemental Security Income?", checked off all applicable answers on the form, and elicited further answers with the probe, "Any other reason?"  Many recipients of Supplemental Security Income received such payments for only one reason (reported in WHYSSI1), and these individuals are coded as Not in Universe (code 0) in WHYSSI2.  For individuals who reported receiving Supplemental Security Income payments for more than one reason (e.g., on the basis of blindness and on behalf of a disabled child), the second reason given is recorded in WHYSSI2.
+
+Respondents were to report SSI payments that they themselves received as beneficiaries and SSI payments that they received on behalf of a child beneficiary.  When interpreting the value labels, users should keep in mind the two meanings of "child" in this context.  Beginning in 1980, the ASEC CPS defined as a "child" anyone under age 15; persons age 15 and older were considered "adults" by the survey and were asked questions about their employment and own income.  (Prior to 1980, persons under age 14 were considered "children" in terms of the survey universe for work and income questions.)  By contrast, government programs such as SSI generally use the more common definition of "child" to mean persons under age 18 when defining eligibility for benefits.  Thus, the value label "Disabled (adult or child)" (corresponding to code 1) covers reporting of one's own benefits by disabled persons who are legally adults (age 18+) and by disabled persons who are legally children but who are "adults" in terms of the CPS definition (age 15-17).    The value label "On behalf of a disabled child" (corresponding to code 3) covers reporting of benefits on behalf of a disabled child under age 15.]]></txt>
+      <catgry>
+        <catValu>0</catValu>
+        <labl>NIU</labl>
+      </catgry>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>Disabled (adult or child)</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Blind (adult or child)</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>On behalf of a disabled child</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>On behalf of a blind child</labl>
+      </catgry>
+      <catgry>
+        <catValu>5</catValu>
+        <labl>Other (adult or child)</labl>
+      </catgry>
+      <concept vocab="IPUMS">Income Variables -- PERSON</concept>
+      <varFormat schema="other" type="numeric"/>
+    </var>
+  </dataDscr>
+</codeBook>

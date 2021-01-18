@@ -156,15 +156,18 @@ df_FRED2 <-
 fig_title = "10-year nominal and real U.S. Treasury rates "
 
 fig_caption1 = "Note: 10-year real rates are proxied by 10-year nominal treasury rates minus average annual CPI inflation rates of the past five years.\n"
-fig_caption2 = "Source: Federal Reserve Bank of St. Louis, Federal Reserve Economic Data (FRED)"
+fig_caption2 = "Source: Board of Governors of the Federal Reserve System; U.S. Bureau of Labor Statistics"
 
-fig <- 
+# Board of Governors of the Federal Reserve System
+# U.S. Bureau of Labor Statistics
+
+fig_rates <- 
 df_FRED2 %>% 
-	filter(year >=1960, yearMon <= as.yearmon(date("2019-06-01"))) %>% 
+	filter(year >=1960, yearMon <= as.yearmon(date("2020-12-01"))) %>% 
 	ggplot(aes(x = yearMon, y = value, color =  variable )) + theme_bw2() + 
 	geom_line(size = 0.75) + 
 	geom_hline(yintercept = 0, linetype = 2) +
-	scale_x_continuous(breaks = seq(1960, 2020, 5))+ 
+	scale_x_continuous(breaks = seq(1960, 2021, 5))+ 
 	scale_y_continuous(breaks = seq(0, 0.2, 0.025),  labels = percent) + 
 	scale_color_manual(values = c(SOA_red, SOA_darkblue, SOA_lightblue)) + 
 	labs(
@@ -181,8 +184,8 @@ df_FRED2 %>%
 				# text = element_text(family = "Calibri Light", color = "grey20"),
 				)
 
-fig
-save_figure(fig, "Figures/", width = 10*0.8, height = 6*0.8)
+fig_rates
+save_figure(fig_rates, "Figures/", width = 10*0.8, height = 6*0.8)
 
 
 
@@ -191,7 +194,7 @@ save_figure(fig, "Figures/", width = 10*0.8, height = 6*0.8)
 #**********************************************************************
 
 # Figure 4 code snippet
-rates.all <- readRDS("./Data/rates.all.rds")
+rates.all <- readRDS("./codeFromDon/rates.all.rds")
 levs <- c("DGS10", "private", "public")
 labs <- c("10-year Treasury yield", "Private average assumed return", "State-local average assumed return")
 

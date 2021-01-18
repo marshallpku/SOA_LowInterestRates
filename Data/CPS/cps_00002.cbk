@@ -1,0 +1,283 @@
+Description: Revision of 00001
+Samples selected:
+      IPUMS-CPS, ASEC 2013                              regular
+      IPUMS-CPS, ASEC 2018                              regular
+File Type:                    rectangular
+Case Selection:               No
+  Variable               Columns        Len    03/2013 03/2018
+  YEAR               H   1-4            4      X       X 
+  SERIAL             H   5-9            5      X       X 
+  MONTH              H  10-11           2      X       X 
+  CPSID              H  12-25          14      X       X 
+  ASECFLAG           H  26              1      X       X 
+  ASECWTH            H  27-36          10      X       X 
+  PERNUM             P  37-38           2      X       X 
+  CPSIDP             P  39-52          14      X       X 
+  ASECWT             P  53-62          10      X       X 
+  FTOTVAL            P  63-72          10      X       X 
+  INCTOT             P  73-80           8      X       X 
+  INCWAGE            P  81-87           7      X       X 
+  INCFARM            P  88-94           7      X       X 
+  INCSS              P  95-99           5      X       X 
+  INCWELFR           P 100-104          5      X       X 
+  INCRETIR           P 105-110          6      X       X 
+  INCSSI             P 111-115          5      X       X 
+  INCINT             P 116-120          5      X       X 
+  INCUNEMP           P 121-125          5      X       X 
+  INCWKCOM           P 126-130          5      X       X 
+  INCVET             P 131-135          5      X       X 
+  INCSURV            P 136-141          6      X       X 
+  INCDISAB           P 142-147          6      X       X 
+  INCDIVID           P 148-153          6      X       X 
+  INCRENT            P 154-158          5      X       X 
+  INCEDUC            P 159-163          5      X       X 
+  INCCHILD           P 164-168          5      X       X 
+  INCALIM            P 169-173          5      X       . 
+  INCASIST           P 174-178          5      X       X 
+  INCOTHER           P 179-183          5      X       X 
+  GOTVDISA           P 184              1      X       X 
+  GOTVEDUC           P 185              1      X       X 
+  GOTVOTHE           P 186              1      X       X 
+  GOTVPENS           P 187              1      X       X 
+  GOTVSURV           P 188              1      X       X 
+  INCDISA1           P 189-193          5      X       X 
+  INCDISA2           P 194-198          5      X       X 
+  INCLONGJ           P 199-205          7      X       X 
+  INCRETI1           P 206-210          5      X       X 
+  INCRETI2           P 211-215          5      X       X 
+  INCSURV1           P 216-220          5      X       X 
+  INCSURV2           P 221-225          5      X       X 
+  MTHWELFR           P 226-230          5      X       X 
+  OINCBUS            P 231-236          6      X       X 
+  OINCFARM           P 237-242          6      X       X 
+  OINCWAGE           P 243-249          7      X       X 
+  SRCDISA1           P 250-251          2      X       X 
+  SRCDISA2           P 252-253          2      X       X 
+  SRCEARN            P 254              1      X       X 
+  SRCEDUC            P 255              1      X       X 
+  SRCRETI1           P 256              1      X       X 
+  SRCRETI2           P 257              1      X       X 
+  SRCSURV1           P 258-259          2      X       X 
+  SRCSURV2           P 260-261          2      X       X 
+  SRCUNEMP           P 262              1      X       X 
+  SRCWELFR           P 263              1      X       X 
+  SRCWKCOM           P 264              1      X       X 
+  SSIKID             P 265              1      X       X 
+  SSKID              P 266              1      X       X 
+  VETQA              P 267              1      X       X 
+  WHYSS1             P 268              1      X       X 
+  WHYSS2             P 269              1      X       X 
+  WHYSSI1            P 270              1      X       X 
+  WHYSSI2            P 271              1      X       X 
+
+Variable Availability Key:
+All Years X - available in this sample
+All Years . - not available in this sample
+
+
+ MONTH		Month
+01		January
+02		February
+03		March
+04		April
+05		May
+06		June
+07		July
+08		August
+09		September
+10		October
+11		November
+12		December
+
+ ASECFLAG		Flag for ASEC
+1		ASEC
+2		March Basic
+
+ GOTVDISA		Received veterans' disability compensation
+0		NIU
+1		No
+2		Yes
+
+ GOTVEDUC		Received veterans' education assistance
+0		NIU
+1		No
+2		Yes
+
+ GOTVOTHE		Received other veterans' payments
+0		NIU
+1		No
+2		Yes
+
+ GOTVPENS		Received veterans' pension
+0		NIU
+1		No
+2		Yes
+
+ GOTVSURV		Received veterans' survivor benefits
+0		NIU
+1		No
+2		Yes
+
+ SRCDISA1		First source of disability income
+00		NIU
+01		Workers compensation
+02		Company or union disability
+03		Federal govt disability
+04		US military retirement disability
+05		State or local govt employee disability
+06		US railroad retirement disability
+07		Accident or disability insurance
+08		Black lung miners disability
+09		State temporary sickness
+10		Other or don't know
+
+ SRCDISA2		Second source of disability income
+00		NIU
+01		Workers compensation
+02		Company or union disability
+03		Federal govt disability
+04		US military retirement disability
+05		State or local govt employee disability
+06		US railroad retirement disability
+07		Accident or disability insurance
+08		Black lung miners disability
+09		State temporary sickness
+10		Other or don't know
+
+ SRCEARN		Source of earnings from longest job
+0		NIU
+1		Wage and salary
+2		Self employment
+3		Farm self employment
+4		Without pay
+
+ SRCEDUC		Source of educational assistance
+0		NIU
+1		Government assistance
+2		Scholarships, grants etc from school
+3		Other assistance
+4		Govt assistance and scholarships, grants etc from school
+5		Govt assistance and other assistance
+6		Scholarships, grants etc from school and other assistance
+7		Govt assistance, scholarships, grants etc from school, and other assistance
+
+ SRCRETI1		First source of retirement income
+0		NIU
+1		Company or Union  pension
+2		Federal Government retirement Pension
+3		US Military retirement pension
+4		State or local Govt retirement pension
+5		US Railroad retirement pension
+6		Regular payments from annuities or paid-up insurance policies
+7		Regular payments from IRA, KEOGH, or 401K accounts
+8		Other or don't know
+
+ SRCRETI2		Second source of retirement income
+0		NIU
+1		Company or Union  pension
+2		Federal Government retirement Pension
+3		US Military retirement pension
+4		State or local Govt retirement pension
+5		US Railroad retirement pension
+6		Regular payments from annuities or paid-up insurance policies
+7		Regular payments from IRA, KEOGH, or 401K accounts
+8		Other or do not know
+
+ SRCSURV1		First source of survivor benefits
+00		NIU
+01		Company or union survivor pension
+02		Federal government pension
+03		US military retirement survivor pension
+04		State or local govt survivor pension
+05		US railroad retirement survivor pension
+06		Workers compensation pension
+07		Black lung survivor pension
+08		Regular payments from estates or trusts
+09		Regular payments from annuities or paid-up life insurance
+10		Other or do not know
+
+ SRCSURV2		Second source of survivor benefits
+00		NIU
+01		Company or union survivor pension
+02		Federal government pension
+03		US military retirement survivor pension
+04		State or local govt survivor pension
+05		US railroad retirement survivor pension
+06		Workers compensation pension
+07		Black lung survivor pension
+08		Regular payments from estates or trusts
+09		Regular payments from annuities or paid-up life insurance
+10		Other or do not know
+
+ SRCUNEMP		Source of unemployment income
+0		No supplemental or strike benefits
+1		Supplemental unemployment benefits
+2		Union unemployment or strike benefits
+3		Both
+9		NIU
+
+ SRCWELFR		Source of welfare income
+0		NIU
+1		AFDC/TANF
+2		Other
+3		Both AFDC/TANF and other
+
+ SRCWKCOM		Source of workmen's compensation
+0		NIU
+1		State Workers Compensation
+2		Employer or employers insurance
+3		Own insurance
+4		Other
+
+ SSIKID		Child under 18 received SSI income
+0		NIU
+1		No
+2		Yes
+
+ SSKID		Child under 19 received SS income
+0		NIU
+1		No
+2		Yes
+
+ VETQA		Required to fill out annual income questionnaire for veterans' administration
+0		NIU
+1		No
+2		Yes
+
+ WHYSS1		First reason for receiving social security income
+0		NIU
+1		Retired
+2		Disabled (adult or child)
+3		Widowed
+4		Spouse
+5		Surviving child
+6		Dependent child
+7		On behalf of surviving, dependent, or disabled child(ren)
+8		Other (adult or child)
+
+ WHYSS2		Second reason for receiving social security income
+0		NIU
+1		Retired
+2		Disabled (adult or child)
+3		Widowed
+4		Spouse
+5		Surviving child
+6		Dependent child
+7		On behalf of surviving, dependent, or disabled child(ren)
+8		Other (adult or child)
+
+ WHYSSI1		First reason for receiving supplementary security income
+0		NIU
+1		Disabled (adult or child)
+2		Blind (adult or child)
+3		On behalf of a disabled child
+4		On behalf of a blind child
+5		Other (adult or child)
+
+ WHYSSI2		Second reason for receiving supplementary security income
+0		NIU
+1		Disabled (adult or child)
+2		Blind (adult or child)
+3		On behalf of a disabled child
+4		On behalf of a blind child
+5		Other (adult or child)
